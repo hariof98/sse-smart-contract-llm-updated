@@ -1,0 +1,3866 @@
+{
+  "tool": "multiagent_gpt4o-mini",
+  "num_contracts": 54,
+  "total_runtime_seconds": 1522.501,
+  "mean_runtime_seconds": 28.194,
+  "per_class": {
+    "reentrancy": {
+      "tp": 2,
+      "fp": 15,
+      "fn": 29,
+      "precision": 0.117647,
+      "recall": 0.064516,
+      "f1": 0.083333
+    },
+    "access_control": {
+      "tp": 18,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.947368,
+      "recall": 1.0,
+      "f1": 0.972973
+    },
+    "timestamp_dependency": {
+      "tp": 0,
+      "fp": 4,
+      "fn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 20,
+      "fp": 20,
+      "fn": 34,
+      "precision": 0.5,
+      "recall": 0.37037,
+      "f1": 0.425532
+    },
+    "macro": {
+      "precision": 0.355005,
+      "recall": 0.354839,
+      "f1": 0.352102
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 5.854,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 465,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 736,
+          "runtime_seconds": 2.879,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 31, \"reasoning\": \"The contract makes an external call to 'fibonacciLibrary.delegatecall' before updating its own state, allowing a reentrant call to 'withdraw' and potentially allowing multiple withdrawals.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 770,
+          "runtime_seconds": 2.877,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"The withdraw function can be called by any user, allowing unauthorized parties to withdraw Ether from the contract.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":38,\"reasoning\":\"The fallback function can be called by any user, enabling unauthorized access to the Fibonacci library functions.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 677,
+          "runtime_seconds": 2.36,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1042,
+        "runtime_seconds": 2.974,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"The contract makes an external call to 'fibonacciLibrary.delegatecall' before updating its own state, allowing a reentrant call to 'withdraw' and potentially allowing multiple withdrawals.\"},{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"The withdraw function can be called by any user, allowing unauthorized parties to withdraw Ether from the contract.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":38,\"reasoning\":\"The fallback function can be called by any user, enabling unauthorized access to the Fibonacci library functions.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 736,
+        "access_control_specialist": 770,
+        "timestamp_dependency_specialist": 677,
+        "moderator": 1042
+      },
+      "total_tokens": 3225,
+      "specialist_runtime_seconds": 2.88,
+      "moderator_runtime_seconds": 2.974
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 5.311,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 269,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 507,
+          "runtime_seconds": 1.889,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 650,
+          "runtime_seconds": 2.334,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"PushBonusCode\",\"line\":15,\"reasoning\":\"The PushBonusCode function can be called by anyone, allowing unauthorized users to add bonus codes.\"},{\"vuln_class\":\"access_control\",\"function\":\"PopBonusCode\",\"line\":20,\"reasoning\":\"The PopBonusCode function can be called by anyone, allowing unauthorized users to remove bonus codes.\"},{\"vuln_class\":\"access_control\",\"function\":\"UpdateBonusCodeAt\",\"line\":25,\"reasoning\":\"The UpdateBonusCodeAt function can be called by anyone, allowing unauthorized users to modify bonus codes.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 511,
+          "runtime_seconds": 1.237,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 849,
+        "runtime_seconds": 2.975,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"PushBonusCode\",\"line\":15,\"reasoning\":\"The PushBonusCode function can be called by anyone, allowing unauthorized users to add bonus codes.\"},{\"vuln_class\":\"access_control\",\"function\":\"PopBonusCode\",\"line\":20,\"reasoning\":\"The PopBonusCode function can be called by anyone, allowing unauthorized users to remove bonus codes.\"},{\"vuln_class\":\"access_control\",\"function\":\"UpdateBonusCodeAt\",\"line\":25,\"reasoning\":\"The UpdateBonusCodeAt function can be called by anyone, allowing unauthorized users to modify bonus codes.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 507,
+        "access_control_specialist": 650,
+        "timestamp_dependency_specialist": 511,
+        "moderator": 849
+      },
+      "total_tokens": 2517,
+      "specialist_runtime_seconds": 2.335,
+      "moderator_runtime_seconds": 2.975
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.55,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 178,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 477,
+          "runtime_seconds": 2.175,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 20, \"reasoning\": \"The contract transfers Ether to the owner before updating any state variables, allowing the owner to re-enter the function and withdraw multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 482,
+          "runtime_seconds": 1.659,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"IamMissing\",\"line\":20,\"reasoning\":\"The constructor is incorrectly named, allowing anyone to call IamMissing and set themselves as the owner.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 427,
+          "runtime_seconds": 1.241,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 698,
+        "runtime_seconds": 2.373,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":20,\"reasoning\":\"The contract transfers Ether to the owner before updating any state variables, allowing the owner to re-enter the function and withdraw multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"IamMissing\",\"line\":20,\"reasoning\":\"The constructor is incorrectly named, allowing anyone to call IamMissing and set themselves as the owner.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 477,
+        "access_control_specialist": 482,
+        "timestamp_dependency_specialist": 427,
+        "moderator": 698
+      },
+      "total_tokens": 2084,
+      "specialist_runtime_seconds": 2.176,
+      "moderator_runtime_seconds": 2.373
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 47.991,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 142,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 448,
+          "runtime_seconds": 2.1,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 18, \"reasoning\": \"The contract transfers Ether to the owner before updating its state, allowing the owner to re-enter the function and withdraw multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 457,
+          "runtime_seconds": 2.038,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"missing\",\"line\":18,\"reasoning\":\"The constructor 'missing' is incorrectly named and is public, allowing anyone to call it and set themselves as the owner.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 399,
+          "runtime_seconds": 1.934,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 674,
+        "runtime_seconds": 45.887,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":18,\"reasoning\":\"The contract transfers Ether to the owner before updating its state, allowing the owner to re-enter the function and withdraw multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"missing\",\"line\":18,\"reasoning\":\"The constructor 'missing' is incorrectly named and is public, allowing anyone to call it and set themselves as the owner.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 448,
+        "access_control_specialist": 457,
+        "timestamp_dependency_specialist": 399,
+        "moderator": 674
+      },
+      "total_tokens": 1978,
+      "specialist_runtime_seconds": 2.101,
+      "moderator_runtime_seconds": 45.887
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.702,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 143,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 446,
+          "runtime_seconds": 1.964,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 17, \"reasoning\": \"The contract transfers Ether to the owner before updating any state variables, allowing a reentrant call to withdraw multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 459,
+          "runtime_seconds": 1.944,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"Constructor\",\"line\":17,\"reasoning\":\"The constructor is incorrectly named, making it a public function that can be called by anyone, allowing unauthorized access to set the owner.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 399,
+          "runtime_seconds": 1.55,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 674,
+        "runtime_seconds": 2.734,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":17,\"reasoning\":\"The contract transfers Ether to the owner before updating any state variables, allowing a reentrant call to withdraw multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"Constructor\",\"line\":17,\"reasoning\":\"The constructor is incorrectly named, making it a public function that can be called by anyone, allowing unauthorized access to set the owner.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 446,
+        "access_control_specialist": 459,
+        "timestamp_dependency_specialist": 399,
+        "moderator": 674
+      },
+      "total_tokens": 1978,
+      "specialist_runtime_seconds": 1.966,
+      "moderator_runtime_seconds": 2.734
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.91,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 198,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 507,
+          "runtime_seconds": 1.719,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 20, \"reasoning\": \"The contract makes an external call to transfer Ether before updating its own state, allowing a reentrant call to withdraw multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 519,
+          "runtime_seconds": 2.161,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"set\", \"line\": 10, \"reasoning\": \"The 'set' function can be called by any user, allowing unauthorized parties to modify the mapping.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 458,
+          "runtime_seconds": 1.303,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 732,
+        "runtime_seconds": 2.744,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":20,\"reasoning\":\"The contract makes an external call to transfer Ether before updating its own state, allowing a reentrant call to withdraw multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"set\",\"line\":10,\"reasoning\":\"The 'set' function can be called by any user, allowing unauthorized parties to modify the mapping.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 507,
+        "access_control_specialist": 519,
+        "timestamp_dependency_specialist": 458,
+        "moderator": 732
+      },
+      "total_tokens": 2216,
+      "specialist_runtime_seconds": 2.164,
+      "moderator_runtime_seconds": 2.744
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.738,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 682,
+          "runtime_seconds": 2.037,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdrawAll\", \"line\": 38, \"reasoning\": \"The function makes an external call to transfer Ether to msg.sender before updating any state, allowing for reentrancy attacks.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 698,
+          "runtime_seconds": 2.388,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"newOwner\",\"line\":38,\"reasoning\":\"The function 'newOwner' can be called by any address since it lacks the 'onlyOwner' modifier, allowing unauthorized parties to add new owners.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 633,
+          "runtime_seconds": 1.474,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 922,
+        "runtime_seconds": 2.347,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawAll\",\"line\":38,\"reasoning\":\"The function makes an external call to transfer Ether to msg.sender before updating any state, allowing for reentrancy attacks.\"},{\"vuln_class\":\"access_control\",\"function\":\"newOwner\",\"line\":38,\"reasoning\":\"The function 'newOwner' can be called by any address since it lacks the 'onlyOwner' modifier, allowing unauthorized parties to add new owners.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 682,
+        "access_control_specialist": 698,
+        "timestamp_dependency_specialist": 633,
+        "moderator": 922
+      },
+      "total_tokens": 2935,
+      "specialist_runtime_seconds": 2.39,
+      "moderator_runtime_seconds": 2.347
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 47.929,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 131,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 445,
+          "runtime_seconds": 1.996,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"sendTo\", \"line\": 12, \"reasoning\": \"The function sends Ether to an external address before updating any state, allowing the receiver to re-enter the function and potentially withdraw more funds.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 455,
+          "runtime_seconds": 1.823,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sendTo\",\"line\":20,\"reasoning\":\"The function 'sendTo' uses 'tx.origin' for authorization, allowing any contract that calls it to bypass the intended owner check.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 393,
+          "runtime_seconds": 45.153,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 682,
+        "runtime_seconds": 2.771,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"sendTo\",\"line\":12,\"reasoning\":\"The function sends Ether to an external address before updating any state, allowing the receiver to re-enter the function and potentially withdraw more funds.\"},{\"vuln_class\":\"access_control\",\"function\":\"sendTo\",\"line\":20,\"reasoning\":\"The function 'sendTo' uses 'tx.origin' for authorization, allowing any contract that calls it to bypass the intended owner check.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 445,
+        "access_control_specialist": 455,
+        "timestamp_dependency_specialist": 393,
+        "moderator": 682
+      },
+      "total_tokens": 1975,
+      "specialist_runtime_seconds": 45.156,
+      "moderator_runtime_seconds": 2.771
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 68.878,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 4127,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 4548,
+          "runtime_seconds": 2.26,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"execute\", \"line\": 437, \"reasoning\": \"The function makes an external call to `_to.call.value(_value)(_data)` before updating the state, allowing a reentrant call to execute multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 4715,
+          "runtime_seconds": 3.523,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"initMultiowned\", \"line\": 66, \"reasoning\": \"The function initMultiowned can be called by any address, allowing unauthorized parties to set owners and the required confirmations.\"},{\"vuln_class\": \"access_control\", \"function\": \"initDaylimit\", \"line\": 103, \"reasoning\": \"The function initDaylimit can be called by any address, allowing unauthorized parties to set the daily limit.\"},{\"vuln_class\": \"access_control\", \"function\": \"initWallet\", \"line\": 138, \"reasoning\": \"The function initWallet can be called by any address, allowing unauthorized parties to initialize the wallet with arbitrary owners and requirements.\"},{\"vuln_class\": \"access_control\", \"function\": \"kill\", \"line\": 174, \"reasoning\": \"The function kill can be called by any address, allowing unauthorized parties to self-destruct the contract and send funds to an arbitrary address.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 4551,
+          "runtime_seconds": 2.37,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"timestamp_dependency\", \"function\": \"execute\", \"line\": 223, \"reasoning\": \"The operation hash in the execute function is derived using block.number, which can be influenced by miners, potentially allowing them to manipulate the outcome of the transaction.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 5189,
+        "runtime_seconds": 65.351,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"execute\",\"line\":437,\"reasoning\":\"The function makes an external call to `_to.call.value(_value)(_data)` before updating the state, allowing a reentrant call to execute multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"initMultiowned\",\"line\":66,\"reasoning\":\"The function initMultiowned can be called by any address, allowing unauthorized parties to set owners and the required confirmations.\"},{\"vuln_class\":\"access_control\",\"function\":\"initDaylimit\",\"line\":103,\"reasoning\":\"The function initDaylimit can be called by any address, allowing unauthorized parties to set the daily limit.\"},{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":138,\"reasoning\":\"The function initWallet can be called by any address, allowing unauthorized parties to initialize the wallet with arbitrary owners and requirements.\"},{\"vuln_class\":\"access_control\",\"function\":\"kill\",\"line\":174,\"reasoning\":\"The function kill can be called by any address, allowing unauthorized parties to self-destruct the contract and send funds to an arbitrary address.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"execute\",\"line\":223,\"reasoning\":\"The operation hash in the execute function is derived using block.number, which can be influenced by miners, potentially allowing them to manipulate the outcome of the transaction.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 4548,
+        "access_control_specialist": 4715,
+        "timestamp_dependency_specialist": 4551,
+        "moderator": 5189
+      },
+      "total_tokens": 19003,
+      "specialist_runtime_seconds": 3.525,
+      "moderator_runtime_seconds": 65.351
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 7.235,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 3589,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 4027,
+          "runtime_seconds": 2.832,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"execute\", \"line\": 226, \"reasoning\": \"The function makes an external call to `_to.call.value(_value)(_data)` before updating the state, allowing a reentrant call to occur.\"}, {\"vuln_class\": \"reentrancy\", \"function\": \"confirm\", \"line\": 233, \"reasoning\": \"The function makes an external call to `m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data)` before updating the state, which can lead to reentrancy.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 4026,
+          "runtime_seconds": 2.695,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"initMultiowned\", \"line\": 118, \"reasoning\": \"The function initMultiowned can be called by any address since it is not protected by an access control modifier, allowing unauthorized parties to initialize the contract.\"},{\"vuln_class\": \"access_control\", \"function\": \"kill\", \"line\": 197, \"reasoning\": \"The kill function can be called by any address due to the lack of access control, allowing unauthorized parties to self-destruct the contract.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 3953,
+          "runtime_seconds": 2.1,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"timestamp_dependency\", \"function\": \"execute\", \"line\": 197, \"reasoning\": \"The operation hash is generated using block.number, which can be influenced by miners, potentially allowing them to manipulate the outcome of the transaction.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 4549,
+        "runtime_seconds": 4.398,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"execute\",\"line\":226,\"reasoning\":\"The function makes an external call to `_to.call.value(_value)(_data)` before updating the state, allowing a reentrant call to occur.\"},{\"vuln_class\":\"reentrancy\",\"function\":\"confirm\",\"line\":233,\"reasoning\":\"The function makes an external call to `m_txs[_h].to.call.value(m_txs[_h].value)(m_txs[_h].data)` before updating the state, which can lead to reentrancy.\"},{\"vuln_class\":\"access_control\",\"function\":\"initMultiowned\",\"line\":118,\"reasoning\":\"The function initMultiowned can be called by any address since it is not protected by an access control modifier, allowing unauthorized parties to initialize the contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"kill\",\"line\":197,\"reasoning\":\"The kill function can be called by any address due to the lack of access control, allowing unauthorized parties to self-destruct the contract.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"execute\",\"line\":197,\"reasoning\":\"The operation hash is generated using block.number, which can be influenced by miners, potentially allowing them to manipulate the outcome of the transaction.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 4027,
+        "access_control_specialist": 4026,
+        "timestamp_dependency_specialist": 3953,
+        "moderator": 4549
+      },
+      "total_tokens": 16555,
+      "specialist_runtime_seconds": 2.833,
+      "moderator_runtime_seconds": 4.398
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.57,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 121,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 429,
+          "runtime_seconds": 1.993,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdrawAll\", \"line\": 12, \"reasoning\": \"The contract makes an external call to transfer Ether before updating its state, allowing a reentrant call to withdraw multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 442,
+          "runtime_seconds": 1.721,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdrawAll\",\"line\":20,\"reasoning\":\"The function uses tx.origin for authorization, allowing any contract that can call this function to withdraw funds, bypassing the intended owner check.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 380,
+          "runtime_seconds": 1.273,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 663,
+        "runtime_seconds": 2.575,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawAll\",\"line\":12,\"reasoning\":\"The contract makes an external call to transfer Ether before updating its state, allowing a reentrant call to withdraw multiple times.\"},{\"vuln_class\":\"access_control\",\"function\":\"withdrawAll\",\"line\":20,\"reasoning\":\"The function uses tx.origin for authorization, allowing any contract that can call this function to withdraw funds, bypassing the intended owner check.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 429,
+        "access_control_specialist": 442,
+        "timestamp_dependency_specialist": 380,
+        "moderator": 663
+      },
+      "total_tokens": 1914,
+      "specialist_runtime_seconds": 1.994,
+      "moderator_runtime_seconds": 2.575
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.705,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 120,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 441,
+          "runtime_seconds": 2.233,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"forward\", \"line\": 19, \"reasoning\": \"The function makes an external call using delegatecall before updating any state, allowing the callee to re-enter and potentially manipulate the contract's state.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 451,
+          "runtime_seconds": 1.617,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"forward\",\"line\":10,\"reasoning\":\"The 'forward' function can be called by any user, allowing unauthorized parties to execute delegatecall to any address, potentially leading to malicious actions.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 388,
+          "runtime_seconds": 1.356,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 681,
+        "runtime_seconds": 2.47,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"forward\",\"line\":19,\"reasoning\":\"The function makes an external call using delegatecall before updating any state, allowing the callee to re-enter and potentially manipulate the contract's state.\"},{\"vuln_class\":\"access_control\",\"function\":\"forward\",\"line\":10,\"reasoning\":\"The 'forward' function can be called by any user, allowing unauthorized parties to execute delegatecall to any address, potentially leading to malicious actions.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 441,
+        "access_control_specialist": 451,
+        "timestamp_dependency_specialist": 388,
+        "moderator": 681
+      },
+      "total_tokens": 1961,
+      "specialist_runtime_seconds": 2.234,
+      "moderator_runtime_seconds": 2.47
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 43.801,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 1593,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1588,
+          "runtime_seconds": 2.045,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"addPayout\", \"line\": 47, \"reasoning\": \"The function makes external calls to send ether to participants before updating the contract's state, allowing a reentrant call to exploit the contract.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1598,
+          "runtime_seconds": 2.004,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"DynamicPyramid\",\"line\":10,\"reasoning\":\"The constructor is incorrectly named, making it a public function that can be called by anyone, allowing unauthorized parties to set the creator address.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 1535,
+          "runtime_seconds": 40.972,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1828,
+        "runtime_seconds": 2.822,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"addPayout\",\"line\":47,\"reasoning\":\"The function makes external calls to send ether to participants before updating the contract's state, allowing a reentrant call to exploit the contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"DynamicPyramid\",\"line\":10,\"reasoning\":\"The constructor is incorrectly named, making it a public function that can be called by anyone, allowing unauthorized parties to set the creator address.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1588,
+        "access_control_specialist": 1598,
+        "timestamp_dependency_specialist": 1535,
+        "moderator": 1828
+      },
+      "total_tokens": 6549,
+      "specialist_runtime_seconds": 40.978,
+      "moderator_runtime_seconds": 2.822
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.987,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 91,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 358,
+          "runtime_seconds": 1.652,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 430,
+          "runtime_seconds": 2.003,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sudicideAnyone\",\"line\":6,\"reasoning\":\"The function 'sudicideAnyone' allows any user to call it and selfdestruct the contract, which is a sensitive action that should be restricted.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 362,
+          "runtime_seconds": 1.21,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 558,
+        "runtime_seconds": 1.969,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sudicideAnyone\",\"line\":6,\"reasoning\":\"The function 'sudicideAnyone' allows any user to call it and selfdestruct the contract, which is a sensitive action that should be restricted.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 358,
+        "access_control_specialist": 430,
+        "timestamp_dependency_specialist": 362,
+        "moderator": 558
+      },
+      "total_tokens": 1708,
+      "specialist_runtime_seconds": 2.017,
+      "moderator_runtime_seconds": 1.969
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.497,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 185,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 431,
+          "runtime_seconds": 1.576,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 498,
+          "runtime_seconds": 1.626,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"changeOwner\", \"line\": 25, \"reasoning\": \"The changeOwner function can be called by any address, allowing unauthorized parties to change the contract's owner.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 435,
+          "runtime_seconds": 1.209,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 614,
+        "runtime_seconds": 1.869,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"changeOwner\",\"line\":25,\"reasoning\":\"The changeOwner function can be called by any address, allowing unauthorized parties to change the contract's owner.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 431,
+        "access_control_specialist": 498,
+        "timestamp_dependency_specialist": 435,
+        "moderator": 614
+      },
+      "total_tokens": 1978,
+      "specialist_runtime_seconds": 1.627,
+      "moderator_runtime_seconds": 1.869
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.706,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 319,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 589,
+          "runtime_seconds": 2.078,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"refund\", \"line\": 36, \"reasoning\": \"The contract transfers Ether to the caller before updating the user's balance, allowing an attacker to call refund() repeatedly and drain the contract.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 595,
+          "runtime_seconds": 1.601,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"refund\",\"line\":36,\"reasoning\":\"The refund function allows any user to withdraw their balance without proper authorization checks, potentially enabling unauthorized access to funds.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 539,
+          "runtime_seconds": 1.242,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 812,
+        "runtime_seconds": 2.625,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"refund\",\"line\":36,\"reasoning\":\"The contract transfers Ether to the caller before updating the user's balance, allowing an attacker to call refund() repeatedly and drain the contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"refund\",\"line\":36,\"reasoning\":\"The refund function allows any user to withdraw their balance without proper authorization checks, potentially enabling unauthorized access to funds.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 589,
+        "access_control_specialist": 595,
+        "timestamp_dependency_specialist": 539,
+        "moderator": 812
+      },
+      "total_tokens": 2535,
+      "specialist_runtime_seconds": 2.079,
+      "moderator_runtime_seconds": 2.625
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 49.72,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 275,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 558,
+          "runtime_seconds": 46.705,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 20, \"reasoning\": \"The contract makes an external call to transfer Ether before updating the user's balance, allowing a reentrant call to withdraw more funds than intended.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 571,
+          "runtime_seconds": 46.635,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":10,\"reasoning\":\"The function initWallet is incorrectly named as a constructor, allowing anyone to call it and become the creator, thus gaining unauthorized access to withdraw funds.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 507,
+          "runtime_seconds": 1.252,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 798,
+        "runtime_seconds": 3.013,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":20,\"reasoning\":\"The contract makes an external call to transfer Ether before updating the user's balance, allowing a reentrant call to withdraw more funds than intended.\"},{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":10,\"reasoning\":\"The function initWallet is incorrectly named as a constructor, allowing anyone to call it and become the creator, thus gaining unauthorized access to withdraw funds.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 558,
+        "access_control_specialist": 571,
+        "timestamp_dependency_specialist": 507,
+        "moderator": 798
+      },
+      "total_tokens": 2434,
+      "specialist_runtime_seconds": 46.706,
+      "moderator_runtime_seconds": 3.013
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.692,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 286,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 563,
+          "runtime_seconds": 2.01,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 30, \"reasoning\": \"The contract makes an external call to transfer Ether before updating the user's balance, allowing a reentrant call to withdraw more funds than intended.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 568,
+          "runtime_seconds": 1.812,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The withdraw function allows any user to withdraw arbitrary amounts of Ether, as the access control check is incorrectly implemented.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 512,
+          "runtime_seconds": 1.332,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 787,
+        "runtime_seconds": 2.681,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The contract makes an external call to transfer Ether before updating the user's balance, allowing a reentrant call to withdraw more funds than intended.\"},{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The withdraw function allows any user to withdraw arbitrary amounts of Ether, as the access control check is incorrectly implemented.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 563,
+        "access_control_specialist": 568,
+        "timestamp_dependency_specialist": 512,
+        "moderator": 787
+      },
+      "total_tokens": 2430,
+      "specialist_runtime_seconds": 2.01,
+      "moderator_runtime_seconds": 2.681
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 6.654,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 752,
+          "runtime_seconds": 1.845,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"Collect\", \"line\": 54, \"reasoning\": \"The function makes an external call to transfer funds before updating the user's balance, allowing for reentrancy attacks.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 869,
+          "runtime_seconds": 2.915,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"SetMinSum\", \"line\": 12, \"reasoning\": \"The function can be called by any user to set the minimum sum without any access control, allowing unauthorized changes.\"},{\"vuln_class\": \"access_control\", \"function\": \"SetLogFile\", \"line\": 20, \"reasoning\": \"This function can also be called by any user to change the log file address, which poses a security risk.\"},{\"vuln_class\": \"access_control\", \"function\": \"Initialized\", \"line\": 28, \"reasoning\": \"Any user can call this function to set the initialized state, potentially allowing unauthorized access to other functions.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 763,
+          "runtime_seconds": 1.866,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"timestamp_dependency\", \"function\": \"AddMessage\", \"line\": 54, \"reasoning\": \"The function uses 'now' to record the timestamp of messages, which can be manipulated by miners, potentially affecting the integrity of the logged data.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1271,
+        "runtime_seconds": 3.736,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function makes an external call to transfer funds before updating the user's balance, allowing for reentrancy attacks.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":12,\"reasoning\":\"The function can be called by any user to set the minimum sum without any access control, allowing unauthorized changes.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":20,\"reasoning\":\"This function can also be called by any user to change the log file address, which poses a security risk.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":28,\"reasoning\":\"Any user can call this function to set the initialized state, potentially allowing unauthorized access to other functions.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"AddMessage\",\"line\":54,\"reasoning\":\"The function uses 'now' to record the timestamp of messages, which can be manipulated by miners, potentially affecting the integrity of the logged data.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 752,
+        "access_control_specialist": 869,
+        "timestamp_dependency_specialist": 763,
+        "moderator": 1271
+      },
+      "total_tokens": 3655,
+      "specialist_runtime_seconds": 2.917,
+      "moderator_runtime_seconds": 3.736
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 45.57,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 346,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 639,
+          "runtime_seconds": 2.036,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"CashOut\", \"line\": 38, \"reasoning\": \"The contract makes an external call to transfer funds before updating the user's balance, allowing a reentrant call to exploit the function.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.532,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 647,
+          "runtime_seconds": 1.771,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"timestamp_dependency\", \"function\": \"AddMessage\", \"line\": 38, \"reasoning\": \"The function uses 'now' to record the timestamp of a message, which can be manipulated by miners, potentially affecting the integrity of the logged data.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 0,
+        "runtime_seconds": 43.035,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 639,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 647,
+        "moderator": 0
+      },
+      "total_tokens": 1286,
+      "specialist_runtime_seconds": 2.534,
+      "moderator_runtime_seconds": 43.035
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.52,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.162,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.354,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.197,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.163,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.357,
+      "moderator_runtime_seconds": 2.163
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.345,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 408,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.456,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.078,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.126,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.261,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.082,
+      "moderator_runtime_seconds": 2.261
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 56.966,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.365,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.2,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.233,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 54.598,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.366,
+      "moderator_runtime_seconds": 54.598
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.481,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 435,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.317,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.273,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.137,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.158,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.319,
+      "moderator_runtime_seconds": 2.158
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.032,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.748,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.741,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.243,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.279,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.75,
+      "moderator_runtime_seconds": 2.279
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.721,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 409,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.275,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.301,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.294,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.413,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.303,
+      "moderator_runtime_seconds": 2.413
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 56.76,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.45,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.513,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.332,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.244,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.514,
+      "moderator_runtime_seconds": 2.244
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.893,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.232,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.337,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.337,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.552,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.339,
+      "moderator_runtime_seconds": 2.552
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 56.249,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.086,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.101,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.148,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.159,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.087,
+      "moderator_runtime_seconds": 2.159
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.046,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 372,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.153,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.123,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.385,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 54.657,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.388,
+      "moderator_runtime_seconds": 54.657
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.246,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.196,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.192,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.183,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.046,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.198,
+      "moderator_runtime_seconds": 2.046
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 59.332,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.57,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.568,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 56.927,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.403,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 56.929,
+      "moderator_runtime_seconds": 2.403
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.153,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 349,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.226,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.304,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.152,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 54.847,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.305,
+      "moderator_runtime_seconds": 54.847
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 5.05,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 347,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.347,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.608,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.279,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.436,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.612,
+      "moderator_runtime_seconds": 2.436
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.286,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.773,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 56.161,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.766,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.121,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 56.164,
+      "moderator_runtime_seconds": 2.121
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.343,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.247,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.118,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.284,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.053,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.287,
+      "moderator_runtime_seconds": 2.053
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 54.635,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 52.445,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.229,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.081,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.184,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 52.449,
+      "moderator_runtime_seconds": 2.184
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.406,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.31,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.065,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.209,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.091,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.312,
+      "moderator_runtime_seconds": 2.091
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 56.523,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.047,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.142,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.472,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.372,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.145,
+      "moderator_runtime_seconds": 2.372
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.334,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 237,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.181,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.202,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.169,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.126,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.204,
+      "moderator_runtime_seconds": 2.126
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 54.532,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.054,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 52.49,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.962,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.031,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 52.498,
+      "moderator_runtime_seconds": 2.031
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.319,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.236,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.252,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.253,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.059,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.257,
+      "moderator_runtime_seconds": 2.059
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.354,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 258,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.258,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.047,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.197,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.092,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.259,
+      "moderator_runtime_seconds": 2.092
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.898,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.57,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.369,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.37,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 56.323,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.571,
+      "moderator_runtime_seconds": 56.323
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.545,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 172,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.112,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.239,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.356,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.179,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.363,
+      "moderator_runtime_seconds": 2.179
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.019,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.336,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.751,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.154,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.861,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.155,
+      "moderator_runtime_seconds": 2.861
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.545,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 200,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.215,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.357,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.181,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.183,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.359,
+      "moderator_runtime_seconds": 2.183
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 56.312,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 146,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.965,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.025,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 52.722,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.273,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.037,
+      "moderator_runtime_seconds": 2.273
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 1.33,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 9096,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 0.676,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 0.685,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 0.686,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 0.634,
+        "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 0.691,
+      "moderator_runtime_seconds": 0.634
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 54.977,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 421,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.317,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.346,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.231,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 52.624,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.352,
+      "moderator_runtime_seconds": 52.624
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 4.695,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 293,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.279,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.465,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.461,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.227,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.467,
+      "moderator_runtime_seconds": 2.227
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 58.408,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.776,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.025,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.067,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.626,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.778,
+      "moderator_runtime_seconds": 2.626
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 4.709,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.295,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.292,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.283,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.41,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.296,
+      "moderator_runtime_seconds": 2.41
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 56.537,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 107,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.071,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.984,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.223,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.312,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.224,
+      "moderator_runtime_seconds": 2.312
+    }
+  ],
+  "run_index": 1,
+  "total_tokens_used": 80916,
+  "role_token_totals": {
+    "reentrancy_specialist": 19171,
+    "access_control_specialist": 19253,
+    "timestamp_dependency_specialist": 18469,
+    "moderator": 24023
+  },
+  "mean_tokens_per_contract": 1498.4,
+  "skipped_contracts": 0
+}

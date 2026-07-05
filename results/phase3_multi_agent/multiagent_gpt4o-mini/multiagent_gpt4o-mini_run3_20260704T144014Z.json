@@ -1,0 +1,3569 @@
+{
+  "tool": "multiagent_gpt4o-mini",
+  "num_contracts": 54,
+  "total_runtime_seconds": 1393.905,
+  "mean_runtime_seconds": 25.813,
+  "per_class": {
+    "reentrancy": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 31,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "access_control": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 18,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "timestamp_dependency": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 54,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 58.321,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 465,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.231,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.223,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.19,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 56.089,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.231,
+      "moderator_runtime_seconds": 56.089
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.477,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 269,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.217,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.114,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.213,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.254,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.219,
+      "moderator_runtime_seconds": 2.254
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 57.886,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 178,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.209,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.632,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.579,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.299,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.585,
+      "moderator_runtime_seconds": 2.299
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.608,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 142,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.48,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.087,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.389,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.123,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.481,
+      "moderator_runtime_seconds": 2.123
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 55.504,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 143,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.208,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.965,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.057,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.292,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 53.21,
+      "moderator_runtime_seconds": 2.292
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.73,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 198,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.399,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.109,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.254,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.319,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.4,
+      "moderator_runtime_seconds": 2.319
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 56.272,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.0,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.054,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.009,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.213,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.057,
+      "moderator_runtime_seconds": 2.213
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.812,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 131,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.543,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.283,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.388,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.262,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.545,
+      "moderator_runtime_seconds": 2.262
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 56.839,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 4127,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.479,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.221,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 52.849,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.354,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.483,
+      "moderator_runtime_seconds": 2.354
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 57.868,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 3589,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.615,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.435,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.614,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 55.248,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.616,
+      "moderator_runtime_seconds": 55.248
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.548,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 121,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.518,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.541,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.352,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.002,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.543,
+      "moderator_runtime_seconds": 2.002
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 57.317,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 120,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.096,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.642,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.095,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.218,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.098,
+      "moderator_runtime_seconds": 2.218
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.309,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 1593,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.248,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.194,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.187,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.054,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.252,
+      "moderator_runtime_seconds": 2.054
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 56.054,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 91,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 52.568,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.945,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.948,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.102,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 53.95,
+      "moderator_runtime_seconds": 2.102
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.429,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 185,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.294,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.304,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.271,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.118,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.306,
+      "moderator_runtime_seconds": 2.118
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 55.878,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 319,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.988,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.936,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 53.485,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.39,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 53.487,
+      "moderator_runtime_seconds": 2.39
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 4.611,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 275,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.142,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.227,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.178,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.377,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.233,
+      "moderator_runtime_seconds": 2.377
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 57.166,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 286,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.934,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.611,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.334,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.551,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 54.613,
+      "moderator_runtime_seconds": 2.551
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.452,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.496,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.598,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.417,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 54.843,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.607,
+      "moderator_runtime_seconds": 54.843
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.544,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 346,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.161,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.248,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.275,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.261,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.279,
+      "moderator_runtime_seconds": 2.261
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.36,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 56.109,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.57,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.636,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.248,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 56.11,
+      "moderator_runtime_seconds": 2.248
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.457,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 408,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.38,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.194,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.28,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 56.047,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.403,
+      "moderator_runtime_seconds": 56.047
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.448,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.273,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.206,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.244,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.172,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.275,
+      "moderator_runtime_seconds": 2.172
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 58.448,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 435,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.157,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 54.543,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 55.908,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.535,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 55.911,
+      "moderator_runtime_seconds": 2.535
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 57.36,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.299,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.314,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.299,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 55.041,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.317,
+      "moderator_runtime_seconds": 55.041
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.646,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 409,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.327,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.283,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.434,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.204,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.439,
+      "moderator_runtime_seconds": 2.204
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.543,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.317,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.989,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.315,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.213,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.324,
+      "moderator_runtime_seconds": 2.213
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 50.256,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.174,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.082,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.203,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 48.045,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.21,
+      "moderator_runtime_seconds": 48.045
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.605,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.307,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.272,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.096,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.295,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.309,
+      "moderator_runtime_seconds": 2.295
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.261,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 372,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.069,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.115,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.044,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.141,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.118,
+      "moderator_runtime_seconds": 2.141
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.098,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.968,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.954,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.032,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.06,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.035,
+      "moderator_runtime_seconds": 2.06
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 50.142,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.037,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.958,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 47.966,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.166,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 47.969,
+      "moderator_runtime_seconds": 2.166
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.27,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 349,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.168,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.231,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.061,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.034,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.235,
+      "moderator_runtime_seconds": 2.034
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.31,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 347,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.246,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.175,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.254,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.039,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.268,
+      "moderator_runtime_seconds": 2.039
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.213,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.12,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.074,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.001,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.09,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.12,
+      "moderator_runtime_seconds": 2.09
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 47.638,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.096,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 45.477,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.022,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.156,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 45.479,
+      "moderator_runtime_seconds": 2.156
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.372,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.092,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.161,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.171,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.179,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.189,
+      "moderator_runtime_seconds": 2.179
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.116,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.056,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.116,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.127,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 1.979,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.131,
+      "moderator_runtime_seconds": 1.979
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 50.096,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.079,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.949,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.959,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 48.014,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.08,
+      "moderator_runtime_seconds": 48.014
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 5.073,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 237,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.464,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.433,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.459,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.604,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.465,
+      "moderator_runtime_seconds": 2.604
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.373,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.312,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.195,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.429,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 1.94,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.431,
+      "moderator_runtime_seconds": 1.94
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 50.525,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.904,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.961,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.937,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 48.56,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 1.963,
+      "moderator_runtime_seconds": 48.56
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.703,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 258,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.348,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.224,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.082,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.351,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.349,
+      "moderator_runtime_seconds": 2.351
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.691,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.261,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.117,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.163,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.426,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.262,
+      "moderator_runtime_seconds": 2.426
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 50.792,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 172,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.094,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.187,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.298,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 48.488,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.303,
+      "moderator_runtime_seconds": 48.488
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.302,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.244,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.255,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.095,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.043,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.257,
+      "moderator_runtime_seconds": 2.043
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.306,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 200,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.147,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.081,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.106,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.157,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.148,
+      "moderator_runtime_seconds": 2.157
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 4.165,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 146,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.971,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.013,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.97,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.15,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.014,
+      "moderator_runtime_seconds": 2.15
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 2.946,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 9096,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 0.671,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.395,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 0.668,
+          "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 0.55,
+        "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.396,
+      "moderator_runtime_seconds": 0.55
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 48.309,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 421,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.01,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.016,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 46.1,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.2,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 46.106,
+      "moderator_runtime_seconds": 2.2
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 4.594,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 293,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.25,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.288,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.23,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.303,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.29,
+      "moderator_runtime_seconds": 2.303
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 4.3,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.125,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.163,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.139,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.132,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.166,
+      "moderator_runtime_seconds": 2.132
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 50.0,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.88,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 47.673,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 1.997,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.32,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 47.677,
+      "moderator_runtime_seconds": 2.32
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "timestamp_dependency"
+      ],
+      "runtime_seconds": 4.562,
+      "model": "gpt4o-mini",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 107,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.402,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.233,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 0,
+          "runtime_seconds": 2.377,
+          "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+          "response": ""
+        }
+      },
+      "specialist_union_classes": [],
+      "moderator": {
+        "ran": true,
+        "classes": [],
+        "total_tokens": 0,
+        "runtime_seconds": 2.154,
+        "error": "Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).",
+        "fell_back_to_union": true,
+        "response": ""
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 0,
+        "access_control_specialist": 0,
+        "timestamp_dependency_specialist": 0,
+        "moderator": 0
+      },
+      "total_tokens": 0,
+      "specialist_runtime_seconds": 2.404,
+      "moderator_runtime_seconds": 2.154
+    }
+  ],
+  "run_index": 3,
+  "total_tokens_used": 0,
+  "role_token_totals": {
+    "reentrancy_specialist": 0,
+    "access_control_specialist": 0,
+    "timestamp_dependency_specialist": 0,
+    "moderator": 0
+  },
+  "mean_tokens_per_contract": 0.0,
+  "skipped_contracts": 0
+}
