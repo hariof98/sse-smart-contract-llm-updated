@@ -32,7 +32,7 @@ model from the other provider is rejected with "Unknown model".
 # The shared LLM client (phase1's llm_single_agent) reads the helpers below to
 # pick the right base URL, API-key variable, and catalog automatically — no
 # other code needs to change.
-USE_OPENAI: bool = True
+USE_OPENAI: bool = False
 
 GITHUB_BASE_URL: str = "https://models.github.ai/inference"
 OPENAI_BASE_URL: str = "https://api.openai.com/v1"
