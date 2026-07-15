@@ -1,0 +1,2052 @@
+{
+  "tool": "hybrid_slither_gpt-4.1-nano",
+  "num_contracts": 54,
+  "total_runtime_seconds": 60.377,
+  "mean_runtime_seconds": 1.118,
+  "per_class": {
+    "reentrancy": {
+      "tp": 29,
+      "fp": 4,
+      "fn": 2,
+      "precision": 0.878788,
+      "recall": 0.935484,
+      "f1": 0.90625
+    },
+    "access_control": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 12,
+      "precision": 1.0,
+      "recall": 0.333333,
+      "f1": 0.5
+    },
+    "timestamp_dependency": {
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.833333,
+      "recall": 1.0,
+      "f1": 0.909091
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 40,
+      "fp": 5,
+      "fn": 14,
+      "precision": 0.888889,
+      "recall": 0.740741,
+      "f1": 0.808081
+    },
+    "macro": {
+      "precision": 0.90404,
+      "recall": 0.756272,
+      "f1": 0.77178
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.535,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdraw() function and fallback function both rely on delegatecall to an external library, which can be manipulated if not properly access-controlled, making access control a genuine concern."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdraw() function and fallback function both rely on delegatecall to an external library, which can be manipulated if not properly access-controlled, making access control a genuine concern.\"}]}",
+      "total_tokens": 895,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.001,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.059,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function uses tx.origin for access control, which is considered insecure and a genuine vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function uses tx.origin for access control, which is considered insecure and a genuine vulnerability.\"}]}",
+      "total_tokens": 595,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.001,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.639,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract uses call.value() without proper reentrancy guards, but the static code review does not show any external call made before state updates in critical functions, and the code structure suggests reentrancy is unlikely."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "Functions like kill() and execute() are protected by onlymanyowners, but the kill() function directly calls suicide(), which is a sensitive action, and the access control checks are based on ownership verification, making this a genuine concern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code uses block.number and now (block.timestamp) in some functions, but these are not used in security-critical decisions such as fund transfers or state changes that depend on timestamps, thus no timestamp dependency vulnerability is confirmed."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract uses call.value() without proper reentrancy guards, but the static code review does not show any external call made before state updates in critical functions, and the code structure suggests reentrancy is unlikely.\"}, {\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"Functions like kill() and execute() are protected by onlymanyowners, but the kill() function directly calls suicide(), which is a sensitive action, and the access control checks are based on ownership verification, making this a genuine concern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code uses block.number and now (block.timestamp) in some functions, but these are not used in security-critical decisions such as fund transfers or state changes that depend on timestamps, thus no timestamp dependency vulnerability is confirmed.\"}]}",
+      "total_tokens": 4304,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.154,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawAll function relies on tx.origin for access control, which is a known insecure pattern, confirming the vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdrawAll function relies on tx.origin for access control, which is a known insecure pattern, confirming the vulnerability.\"}]}",
+      "total_tokens": 587,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.021,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract's 'forward' function uses delegatecall without any access control checks, allowing anyone to invoke it, which is a security risk."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract's 'forward' function uses delegatecall without any access control checks, allowing anyone to invoke it, which is a security risk.\"}]}",
+      "total_tokens": 600,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 1.482,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract uses 'send' for payouts, which only forwards 2300 gas and is not susceptible to reentrancy; no external call is made before state updates in critical functions."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract uses 'send' for payouts, which only forwards 2300 gas and is not susceptible to reentrancy; no external call is made before state updates in critical functions.\"}]}",
+      "total_tokens": 1759,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 0.905,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function 'sudicideAnyone' has no access control checks and can be called by anyone, leading to unrestricted selfdestruct."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function 'sudicideAnyone' has no access control checks and can be called by anyone, leading to unrestricted selfdestruct.\"}]}",
+      "total_tokens": 573,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.001,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 1.28,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The refund() function makes an external call to msg.sender.transfer() before updating the user's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The refund() function makes an external call to msg.sender.transfer() before updating the user's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 753,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 1.686,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The migrateTo function makes an external call to 'to.transfer' after checking the caller, and it transfers the entire contract balance without updating state beforehand, which is a classic reentrancy risk."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The migrateTo function makes an external call to 'to.transfer' after checking the caller, and it transfers the entire contract balance without updating state beforehand, which is a classic reentrancy risk.\"}]}",
+      "total_tokens": 732,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 1.058,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The 'migrateTo' function makes an external call to 'to.transfer' without updating state beforehand, which is a classic reentrancy risk."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The 'migrateTo' function makes an external call to 'to.transfer' without updating state beforehand, which is a classic reentrancy risk.\"}]}",
+      "total_tokens": 728,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.311,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 921,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.428,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy pattern.\"}]}",
+      "total_tokens": 805,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 0.963,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender.call.value(_am)() before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call to msg.sender.call.value(_am)() before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 926,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.896,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 880,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.128,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 881,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.152,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function WithdrawToHolder makes an external call before updating the state, which is a classic reentrancy pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function WithdrawToHolder makes an external call before updating the state, which is a classic reentrancy pattern.\"}]}",
+      "total_tokens": 903,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.612,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code checks 'now > acc.unlockTime' but does not make any security-critical decision based solely on timestamp; it only enforces a condition, so this is not a timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code checks 'now > acc.unlockTime' but does not make any security-critical decision based solely on timestamp; it only enforces a condition, so this is not a timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 940,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.025,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 854,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.474,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code checks 'now' for timing conditions but does not make any security-critical decisions solely based on timestamps; it only uses 'now' for setting unlockTime and conditionally allowing withdrawal, which is common and not necessarily vulnerable."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code checks 'now' for timing conditions but does not make any security-critical decisions solely based on timestamps; it only uses 'now' for setting unlockTime and conditionally allowing withdrawal, which is common and not necessarily vulnerable.\"}]}",
+      "total_tokens": 951,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.056,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 818,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.573,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code uses 'now' for timing checks, but there is no critical decision dependent solely on timestamp; it is used for setting unlockTime and for a simple comparison, which does not constitute a timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code uses 'now' for timing checks, but there is no critical decision dependent solely on timestamp; it is used for setting unlockTime and for a simple comparison, which does not constitute a timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 948,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.014,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy pattern.\"}]}",
+      "total_tokens": 835,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.513,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy vulnerability."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract's logic depends on 'now' for timing but does not make security-critical decisions solely based on timestamp or block number, so this is a false positive."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy vulnerability.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract's logic depends on 'now' for timing but does not make security-critical decisions solely based on timestamp or block number, so this is a false positive.\"}]}",
+      "total_tokens": 1021,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.63,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 881,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.084,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 812,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.158,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 805,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.049,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The CashOut function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 817,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.57,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy vulnerability."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract's logic depends on 'now' for timing checks, but this is not a security-critical decision; it is a typical timestamp usage, not a timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy vulnerability.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract's logic depends on 'now' for timing checks, but this is not a security-critical decision; it is a typical timestamp usage, not a timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 1020,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.571,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code uses 'now' for timing checks, but this is not a security-critical decision in this context; no critical logic depends solely on timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code uses 'now' for timing checks, but this is not a security-critical decision in this context; no critical logic depends solely on timestamp.\"}]}",
+      "total_tokens": 931,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.901,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code checks 'now > acc.unlockTime' but does not perform any critical decision based solely on timestamp; it is a standard time check, not a timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The Collect function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code checks 'now > acc.unlockTime' but does not perform any critical decision based solely on timestamp; it is a standard time check, not a timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 936,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 0.904,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawBalance function makes an external call before updating the user's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdrawBalance function makes an external call before updating the user's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 642,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.749,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawFunds function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The code checks 'now' against lastWithdrawTime to enforce a time limit, but this is not a security-critical decision vulnerable to manipulation."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdrawFunds function makes an external call (msg.sender.call.value) before updating the user's balance, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"The code checks 'now' against lastWithdrawTime to enforce a time limit, but this is not a security-critical decision vulnerable to manipulation.\"}]}",
+      "total_tokens": 777,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.351,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract's airDrop function makes an external call to ModifierEntrancy(msg.sender).airDrop() without updating the sender's state beforehand, which is a classic reentrancy pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract's airDrop function makes an external call to ModifierEntrancy(msg.sender).airDrop() without updating the sender's state beforehand, which is a classic reentrancy pattern.\"}]}",
+      "total_tokens": 827,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.29,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdraw function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdraw function makes an external call (msg.sender.call.value) before updating the sender's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 680,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.048,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawAll function makes an external call (msg.sender.call.value) before updating the user's credit, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdrawAll function makes an external call (msg.sender.call.value) before updating the user's credit, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 654,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.421,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to msg.sender before updating the user's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract makes an external call to msg.sender before updating the user's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 633,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.039,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawBalance function makes an external call to msg.sender before updating the user's balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdrawBalance function makes an external call to msg.sender before updating the user's balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 667,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.372,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdraw function makes an external call to msg.sender before updating the credit balance, which is a classic reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The withdraw function makes an external call to msg.sender before updating the credit balance, which is a classic reentrancy vulnerability.\"}]}",
+      "total_tokens": 630,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 1.623,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function LCOpenTimeout involves external calls to transfer tokens and ETH before updating the contract state, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function LCOpenTimeout and byzantineCloseChannel rely on 'now' for timing checks, which can be manipulated by miners, making them timestamp-dependent."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function LCOpenTimeout involves external calls to transfer tokens and ETH before updating the contract state, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function LCOpenTimeout and byzantineCloseChannel rely on 'now' for timing checks, which can be manipulated by miners, making them timestamp-dependent.\"}]}",
+      "total_tokens": 9296,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.886,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract only makes external calls to 'bank.transfer' and 'msg.sender.transfer', which are safe from reentrancy as they are transfer calls that forward limited gas, and the state variable 'pot' is updated before transfers occur."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The code uses 'block.timestamp' to generate a pseudo-random value for winner selection, which is a known timestamp manipulation vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract only makes external calls to 'bank.transfer' and 'msg.sender.transfer', which are safe from reentrancy as they are transfer calls that forward limited gas, and the state variable 'pot' is updated before transfers occur.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The code uses 'block.timestamp' to generate a pseudo-random value for winner selection, which is a known timestamp manipulation vulnerability.\"}]}",
+      "total_tokens": 955,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 1.567,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The resetInvestment function makes an external call to lastInvestor.send() before updating state variables, which is a classic reentrancy pattern."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function resetInvestment relies on block.timestamp for timing checks, which can be manipulated by miners, confirming timestamp dependency."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"The resetInvestment function makes an external call to lastInvestor.send() before updating state variables, which is a classic reentrancy pattern.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function resetInvestment relies on block.timestamp for timing checks, which can be manipulated by miners, confirming timestamp dependency.\"}]}",
+      "total_tokens": 847,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.06,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' and 'block.timestamp' in critical logic, which are known to be manipulable by miners, confirming timestamp dependency issues."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses 'now' and 'block.timestamp' in critical logic, which are known to be manipulable by miners, confirming timestamp dependency issues.\"}]}",
+      "total_tokens": 702,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.035,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' (alias for block.timestamp) to control game logic, which is a known timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses 'now' (alias for block.timestamp) to control game logic, which is a known timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 655,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.102,
+      "model": "gpt-4.1-nano",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract's isSaleFinished function directly depends on block.timestamp for its logic, which is a classic timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract's isSaleFinished function directly depends on block.timestamp for its logic, which is a classic timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 592,
+      "error": null
+    }
+  ],
+  "run_index": 2,
+  "total_tokens_used": 47968,
+  "mean_tokens_per_contract": 888.3,
+  "skipped_llm_contracts": 10,
+  "skip_rate": 0.1852,
+  "slither_in_scope_total": 57,
+  "confirmed_total": 45,
+  "rejected_total": 12
+}

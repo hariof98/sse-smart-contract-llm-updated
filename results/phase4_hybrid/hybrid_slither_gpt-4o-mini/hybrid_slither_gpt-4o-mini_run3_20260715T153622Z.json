@@ -1,0 +1,2037 @@
+{
+  "tool": "hybrid_slither_gpt-4o-mini",
+  "num_contracts": 54,
+  "total_runtime_seconds": 196.442,
+  "mean_runtime_seconds": 3.638,
+  "per_class": {
+    "reentrancy": {
+      "tp": 28,
+      "fp": 3,
+      "fn": 3,
+      "precision": 0.903226,
+      "recall": 0.903226,
+      "f1": 0.903226
+    },
+    "access_control": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 12,
+      "precision": 1.0,
+      "recall": 0.333333,
+      "f1": 0.5
+    },
+    "timestamp_dependency": {
+      "tp": 5,
+      "fp": 6,
+      "fn": 0,
+      "precision": 0.454545,
+      "recall": 1.0,
+      "f1": 0.625
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 39,
+      "fp": 9,
+      "fn": 15,
+      "precision": 0.8125,
+      "recall": 0.722222,
+      "f1": 0.764706
+    },
+    "macro": {
+      "precision": 0.785924,
+      "recall": 0.74552,
+      "f1": 0.676075
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.358,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdraw function allows any user to call it without proper access control, enabling unauthorized withdrawals."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The withdraw function allows any user to call it without proper access control, enabling unauthorized withdrawals.\"}]}",
+      "total_tokens": 875,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 19.865,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function sendTo uses tx.origin for access control, which can be exploited by malicious contracts, allowing unauthorized parties to call this function."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The function sendTo uses tx.origin for access control, which can be exploited by malicious contracts, allowing unauthorized parties to call this function.\"}]}",
+      "total_tokens": 600,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.114,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "There are no external calls made before state updates that would allow for reentrancy."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The 'kill' function can be called by any user without proper access control checks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "There are no security-critical decisions being made based on block.timestamp, block.number, or blockhash."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"rejected\",\"reasoning\":\"There are no external calls made before state updates that would allow for reentrancy.\"},{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The 'kill' function can be called by any user without proper access control checks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"rejected\",\"reasoning\":\"There are no security-critical decisions being made based on block.timestamp, block.number, or blockhash.\"}]}",
+      "total_tokens": 4209,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.302,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The withdrawAll function allows any user to call it if they are the owner, but it uses tx.origin for access control, which can be exploited by malicious contracts."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The withdrawAll function allows any user to call it if they are the owner, but it uses tx.origin for access control, which can be exploited by malicious contracts.\"}]}",
+      "total_tokens": 593,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.248,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The 'forward' function does not have any access control checks, allowing any user to call it and potentially execute arbitrary code in the context of the contract."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The 'forward' function does not have any access control checks, allowing any user to call it and potentially execute arbitrary code in the context of the contract.\"}]}",
+      "total_tokens": 599,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 2.033,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes external calls to `send` before updating its own state, which can lead to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes external calls to `send` before updating its own state, which can lead to reentrancy attacks.\"}]}",
+      "total_tokens": 1741,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.309,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function 'sudicideAnyone' allows any user to call it and execute selfdestruct, which is a sensitive action that should be restricted."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The function 'sudicideAnyone' allows any user to call it and execute selfdestruct, which is a sensitive action that should be restricted.\"}]}",
+      "total_tokens": 572,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.001,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 2.044,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The refund function makes an external call to transfer Ether before updating the user's balance, allowing for reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The refund function makes an external call to transfer Ether before updating the user's balance, allowing for reentrancy attacks.\"}]}",
+      "total_tokens": 744,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 2.037,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "There are no external calls made before state updates in the contract, thus no reentrancy vulnerability is present."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"There are no external calls made before state updates in the contract, thus no reentrancy vulnerability is present.\"}]}",
+      "total_tokens": 717,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 2.037,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract updates its state (balances[msg.sender]) after the external call (msg.sender.transfer(amount)), which mitigates the reentrancy risk."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract updates its state (balances[msg.sender]) after the external call (msg.sender.transfer(amount)), which mitigates the reentrancy risk.\"}]}",
+      "total_tokens": 729,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.294,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 914,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.995,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 798,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.272,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 916,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.463,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 873,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.136,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 874,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.855,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The WithdrawToHolder function makes an external call to transfer Ether before updating the Holders mapping, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The WithdrawToHolder function makes an external call to transfer Ether before updating the Holders mapping, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 904,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 2.589,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine the unlock time and the conditions for collecting funds, which can be manipulated by miners."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine the unlock time and the conditions for collecting funds, which can be manipulated by miners.\"}]}",
+      "total_tokens": 913,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.032,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 847,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 2.643,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine if the balance can be collected, which can be manipulated by miners."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine if the balance can be collected, which can be manipulated by miners.\"}]}",
+      "total_tokens": 914,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.755,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 810,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 2.31,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine if the balance can be collected, which can be manipulated by miners, creating a timestamp dependency."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine if the balance can be collected, which can be manipulated by miners, creating a timestamp dependency.\"}]}",
+      "total_tokens": 919,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.909,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 827,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.678,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The use of 'now' in the contract does not drive a security-critical decision; it is used for locking and unlocking funds, which does not create a vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"rejected\",\"reasoning\":\"The use of 'now' in the contract does not drive a security-critical decision; it is used for locking and unlocking funds, which does not create a vulnerability.\"}]}",
+      "total_tokens": 1009,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.048,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"}]}",
+      "total_tokens": 874,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.338,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The CashOut function makes an external call to msg.sender before updating the contract's state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 805,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.604,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 797,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.386,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which exposes it to reentrancy attacks.\"}]}",
+      "total_tokens": 809,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.632,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract does not use block.timestamp or similar values to make security-critical decisions; it only uses 'now' for time comparisons."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"rejected\",\"reasoning\":\"The contract does not use block.timestamp or similar values to make security-critical decisions; it only uses 'now' for time comparisons.\"}]}",
+      "total_tokens": 999,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 2.369,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine if the balance can be collected, which introduces a dependency on the block timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine if the balance can be collected, which introduces a dependency on the block timestamp.\"}]}",
+      "total_tokens": 912,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 2.903,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine if the funds can be collected, which can be manipulated by miners, creating a timestamp dependency."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The Collect function makes an external call to msg.sender before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine if the funds can be collected, which can be manipulated by miners, creating a timestamp dependency.\"}]}",
+      "total_tokens": 915,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 17.557,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to transfer funds before updating its own state, which can lead to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to transfer funds before updating its own state, which can lead to reentrancy attacks.\"}]}",
+      "total_tokens": 639,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 3.659,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses `now` to enforce a time-based restriction on withdrawals, which can be manipulated by miners."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses `now` to enforce a time-based restriction on withdrawals, which can be manipulated by miners.\"}]}",
+      "total_tokens": 757,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.817,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The airDrop function makes an external call to the Bank contract before updating its own state, allowing for reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The airDrop function makes an external call to the Bank contract before updating its own state, allowing for reentrancy attacks.\"}]}",
+      "total_tokens": 811,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 1.841,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which allows for reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which allows for reentrancy attacks.\"}]}",
+      "total_tokens": 672,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.109,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to msg.sender before updating its own state, which can lead to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to msg.sender before updating its own state, which can lead to reentrancy attacks.\"}]}",
+      "total_tokens": 645,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.43,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to msg.sender before updating its own state, allowing for reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to msg.sender before updating its own state, allowing for reentrancy attacks.\"}]}",
+      "total_tokens": 627,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 62.624,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to `msg.sender` before updating its own state, which allows for reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to `msg.sender` before updating its own state, which allows for reentrancy attacks.\"}]}",
+      "total_tokens": 662,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.308,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract makes an external call to msg.sender before updating its own state, which can lead to reentrancy attacks."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract makes an external call to msg.sender before updating its own state, which can lead to reentrancy attacks.\"}]}",
+      "total_tokens": 625,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.97,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": "Error code: 413 - {'error': {'code': 'tokens_limit_reached', 'message': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.', 'details': 'Request body too large for gpt-4o-mini model. Max size: 8000 tokens.'}}"
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.504,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract updates its state (pot) before making any external calls (transfers), thus preventing reentrancy."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses block.timestamp to generate a random number, which can be manipulated by miners, making it a timestamp dependency issue."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"rejected\",\"reasoning\":\"The contract updates its state (pot) before making any external calls (transfers), thus preventing reentrancy.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses block.timestamp to generate a random number, which can be manipulated by miners, making it a timestamp dependency issue.\"}]}",
+      "total_tokens": 920,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.2,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "The resetInvestment function makes an external call to send Ether to lastInvestor before updating the contract's state, which can lead to reentrancy attacks."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses block.timestamp to determine if the resetInvestment function can be called, which creates a dependency on the block timestamp for critical logic."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"The resetInvestment function makes an external call to send Ether to lastInvestor before updating the contract's state, which can lead to reentrancy attacks.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses block.timestamp to determine if the resetInvestment function can be called, which creates a dependency on the block timestamp for critical logic.\"}]}",
+      "total_tokens": 845,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.223,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses block.timestamp in a security-critical decision, which can be manipulated by miners, making it vulnerable to timestamp dependency issues."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses block.timestamp in a security-critical decision, which can be manipulated by miners, making it vulnerable to timestamp dependency issues.\"}]}",
+      "total_tokens": 694,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.082,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses 'now' to determine if a player wins, which creates a dependency on the block timestamp for critical game logic."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses 'now' to determine if a player wins, which creates a dependency on the block timestamp for critical game logic.\"}]}",
+      "total_tokens": 652,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.559,
+      "model": "gpt-4o-mini",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses block.timestamp to determine if the sale has finished, which can be manipulated by miners, making it a timestamp dependency vulnerability."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract uses block.timestamp to determine if the sale has finished, which can be manipulated by miners, making it a timestamp dependency vulnerability.\"}]}",
+      "total_tokens": 591,
+      "error": null
+    }
+  ],
+  "run_index": 3,
+  "total_tokens_used": 38148,
+  "mean_tokens_per_contract": 706.4,
+  "skipped_llm_contracts": 10,
+  "skip_rate": 0.1852,
+  "slither_in_scope_total": 57,
+  "confirmed_total": 48,
+  "rejected_total": 7
+}

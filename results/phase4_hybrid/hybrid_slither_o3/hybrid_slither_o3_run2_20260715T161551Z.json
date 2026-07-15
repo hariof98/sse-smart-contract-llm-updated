@@ -1,0 +1,2060 @@
+{
+  "tool": "hybrid_slither_o3",
+  "num_contracts": 54,
+  "total_runtime_seconds": 583.933,
+  "mean_runtime_seconds": 10.814,
+  "per_class": {
+    "reentrancy": {
+      "tp": 29,
+      "fp": 2,
+      "fn": 2,
+      "precision": 0.935484,
+      "recall": 0.935484,
+      "f1": 0.935484
+    },
+    "access_control": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 12,
+      "precision": 1.0,
+      "recall": 0.333333,
+      "f1": 0.5
+    },
+    "timestamp_dependency": {
+      "tp": 5,
+      "fp": 9,
+      "fn": 0,
+      "precision": 0.357143,
+      "recall": 1.0,
+      "f1": 0.526316
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 40,
+      "fp": 11,
+      "fn": 14,
+      "precision": 0.784314,
+      "recall": 0.740741,
+      "f1": 0.761905
+    },
+    "macro": {
+      "precision": 0.764209,
+      "recall": 0.756272,
+      "f1": 0.653933
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 14.541,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The fallback function performs an unrestricted delegatecall to fibonacciLibrary, letting anyone execute library functions in the context of FibonacciBalance. Because of the different storage layout, a caller can invoke setStart() to overwrite the fibonacciLibrary address (slot 0) and gain full control; therefore a critical state-changing action lacks access control."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"access_control\"},\"decision\":\"confirmed\",\"reasoning\":\"The fallback function performs an unrestricted delegatecall to fibonacciLibrary, letting anyone execute library functions in the context of FibonacciBalance. Because of the different storage layout, a caller can invoke setStart() to overwrite the fibonacciLibrary address (slot 0) and gain full control; therefore a critical state-changing action lacks access control.\"}]}",
+      "total_tokens": 1386,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.833,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The function sendTo uses tx.origin instead of msg.sender for authorization, allowing an attacker to call the function through an intermediate contract while keeping tx.origin equal to the owner, thus bypassing proper access control."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The function sendTo uses tx.origin instead of msg.sender for authorization, allowing an attacker to call the function through an intermediate contract while keeping tx.origin equal to the owner, thus bypassing proper access control.\"}]}",
+      "total_tokens": 827,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.002,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 89.563,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Functions execute() and confirm() forward Ether and gas to arbitrary addresses with .call() before internal state (e.g., deletion of m_txs) is finalised, so an external contract owned by an authorised signer can re-enter the wallet and interfere with its logic."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The initialiser initWallet() is only guarded by only_uninitialized, meaning anyone can call it on an uninitialised proxy and set themselves as owner(s), giving unauthorised control over the wallet."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses now (block.timestamp) in today() to enforce and reset the daily spending limit, so miners can influence whether the limit resets by manipulating the timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Functions execute() and confirm() forward Ether and gas to arbitrary addresses with .call() before internal state (e.g., deletion of m_txs) is finalised, so an external contract owned by an authorised signer can re-enter the wallet and interfere with its logic.\"}, {\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The initialiser initWallet() is only guarded by only_uninitialized, meaning anyone can call it on an uninitialised proxy and set themselves as owner(s), giving unauthorised control over the wallet.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses now (block.timestamp) in today() to enforce and reset the daily spending limit, so miners can influence whether the limit resets by manipulating the timestamp.\"}]}",
+      "total_tokens": 7323,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 10.642,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdrawAll relies on tx.origin instead of msg.sender for authorization; an attacker contract can make the owner call this function, satisfying the check and allowing unauthorized withdrawal."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdrawAll relies on tx.origin instead of msg.sender for authorization; an attacker contract can make the owner call this function, satisfying the check and allowing unauthorized withdrawal.\"}]}",
+      "total_tokens": 741,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.151,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The forward() function is publicly callable and lacks any owner or permission check, yet performs delegatecall, giving any user full control over the contract’s storage; this is a genuine access-control flaw."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The forward() function is publicly callable and lacks any owner or permission check, yet performs delegatecall, giving any user full control over the contract’s storage; this is a genuine access-control flaw.\"}]}",
+      "total_tokens": 757,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 18.373,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The contract only performs external ether transfers with .send(), which forwards a fixed 2,300 gas—insufficient for a re-entrant call that could alter contract state. Therefore the external call made before state updates does not expose a practical reentrancy vulnerability."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The contract only performs external ether transfers with .send(), which forwards a fixed 2,300 gas—insufficient for a re-entrant call that could alter contract state. Therefore the external call made before state updates does not expose a practical reentrancy vulnerability.\"}]}",
+      "total_tokens": 2368,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 4.291,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "access_control"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "access_control"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract allows anyone to call sudicideAnyone(), which triggers selfdestruct and sends remaining ether to the caller. No access control is applied, so an unauthorized party can kill the contract."
+        }
+      ],
+      "confirmed_classes": [
+        "access_control"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"access_control\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract allows anyone to call sudicideAnyone(), which triggers selfdestruct and sends remaining ether to the caller. No access control is applied, so an unauthorized party can kill the contract.\"}]}",
+      "total_tokens": 665,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 0.001,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [],
+      "fp": [
+        "reentrancy"
+      ],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 19.127,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In withdraw(), msg.sender.transfer(amount) is executed before balances[msg.sender] is decreased, so a re‐entrant fallback (if given enough gas in future Constantinople-like contexts) could observe the old balance and exploit it; state is updated after the external call, matching the classic reentrancy pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"In withdraw(), msg.sender.transfer(amount) is executed before balances[msg.sender] is decreased, so a re‐entrant fallback (if given enough gas in future Constantinople-like contexts) could observe the old balance and exploit it; state is updated after the external call, matching the classic reentrancy pattern.\"}]}",
+      "total_tokens": 1119,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 23.861,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The only external Ether transfer is done with `msg.sender.transfer`, which forwards just 2,300 gas – insufficient for the callee to perform another `withdraw` call or any state-changing re-entry. No other external call precedes critical state updates, so practical reentrancy is not possible here."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The only external Ether transfer is done with `msg.sender.transfer`, which forwards just 2,300 gas – insufficient for the callee to perform another `withdraw` call or any state-changing re-entry. No other external call precedes critical state updates, so practical reentrancy is not possible here.\"}]}",
+      "total_tokens": 1222,
+      "error": null
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "access_control"
+      ],
+      "runtime_seconds": 25.233,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The only external calls (`msg.sender.transfer` in withdraw and `to.transfer` in migrateTo`) use `transfer`, which forwards only 2300 gas and effectively prevents re-entrant execution of arbitrary logic; additionally, state is not altered in a way that could be exploited with that limited gas. Hence no practical reentrancy vulnerability exists."
+        }
+      ],
+      "confirmed_classes": [],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"rejected\",\"reasoning\":\"The only external calls (`msg.sender.transfer` in withdraw and `to.transfer` in migrateTo`) use `transfer`, which forwards only 2300 gas and effectively prevents re-entrant execution of arbitrary logic; additionally, state is not altered in a way that could be exploited with that limited gas. Hence no practical reentrancy vulnerability exists.\"}]}",
+      "total_tokens": 1164,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 12.137,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect sends ether to msg.sender via low-level call before reducing the sender's balance, allowing reentrant calls that can drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect sends ether to msg.sender via low-level call before reducing the sender's balance, allowing reentrant calls that can drain funds.\"}]}",
+      "total_tokens": 999,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 13.012,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "CashOut sends ether to msg.sender with call() before lowering their balance, allowing a malicious sender to reenter CashOut and drain more funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"CashOut sends ether to msg.sender with call() before lowering their balance, allowing a malicious sender to reenter CashOut and drain more funds.\"}]}",
+      "total_tokens": 949,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 12.672,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender via low-level call before reducing their balance, allowing a malicious recipient to re-enter Collect and withdraw repeatedly (state update happens after the external call)."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether to msg.sender via low-level call before reducing their balance, allowing a malicious recipient to re-enter Collect and withdraw repeatedly (state update happens after the external call).\"}]}",
+      "total_tokens": 1140,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 5.809,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender via low-level call before updating balances[msg.sender], allowing a malicious recipient to re-enter Collect and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"Collect() sends ether to msg.sender via low-level call before updating balances[msg.sender], allowing a malicious recipient to re-enter Collect and drain funds.\"}]}",
+      "total_tokens": 1022,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.661,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In Collect(), the contract sends ether to msg.sender via low-level call before reducing the sender’s balance, allowing the recipient to re-enter Collect and withdraw repeatedly (classic reentrancy)."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"In Collect(), the contract sends ether to msg.sender via low-level call before reducing the sender’s balance, allowing the recipient to re-enter Collect and withdraw repeatedly (classic reentrancy).\"}]}",
+      "total_tokens": 1031,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 31.439,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "WithdrawToHolder sends ether via low-level call to _addr before decreasing Holders[_addr]; the external contract can reenter (e.g., via its fallback) and interact with TokenBank while the state still shows the pre-withdrawal balance, thus a classic state-update-after-call pattern."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"WithdrawToHolder sends ether via low-level call to _addr before decreasing Holders[_addr]; the external contract can reenter (e.g., via its fallback) and interact with TokenBank while the state still shows the pre-withdrawal balance, thus a classic state-update-after-call pattern.\"}]}",
+      "total_tokens": 1663,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 20.596,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect sends ether to msg.sender via low-level call before reducing the stored balance, allowing a malicious receiver to re-enter Collect and drain more funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses now (block.timestamp) in the unlock condition (now > acc.unlockTime) that controls whether a withdrawal is allowed, so a miner could influence the timestamp to shorten the lock period."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect sends ether to msg.sender via low-level call before reducing the stored balance, allowing a malicious receiver to re-enter Collect and drain more funds.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses now (block.timestamp) in the unlock condition (now > acc.unlockTime) that controls whether a withdrawal is allowed, so a miner could influence the timestamp to shorten the lock period.\"}]}",
+      "total_tokens": 1152,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 10.786,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In CashOut(), the contract performs msg.sender.call.value(_am)() before decrementing balances[msg.sender], so a reentrant callback can withdraw repeatedly before the balance update."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"In CashOut(), the contract performs msg.sender.call.value(_am)() before decrementing balances[msg.sender], so a reentrant callback can withdraw repeatedly before the balance update.\"}]}",
+      "total_tokens": 1063,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 4.86,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender via call before reducing their recorded balance, enabling a reentrant attack to re-enter Collect() and drain funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract relies on now (block.timestamp) both to set unlockTime and to allow withdrawals (now > acc.unlockTime), so a miner can manipulate the timestamp slightly to alter the unlock condition."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether to msg.sender via call before reducing their recorded balance, enabling a reentrant attack to re-enter Collect() and drain funds.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract relies on now (block.timestamp) both to set unlockTime and to allow withdrawals (now > acc.unlockTime), so a miner can manipulate the timestamp slightly to alter the unlock condition.\"}]}",
+      "total_tokens": 1217,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.352,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "CashOut sends ether to msg.sender via low-level call before decrementing the sender's balance, allowing a malicious recipient to re-enter CashOut and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"CashOut sends ether to msg.sender via low-level call before decrementing the sender's balance, allowing a malicious recipient to re-enter CashOut and drain funds.\"}]}",
+      "total_tokens": 837,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 8.302,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect sends ether to msg.sender via low-level call before reducing the recorded balance, so a reentrant sender can call Collect again and drain funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The ability to withdraw (Collect) depends on now > unlockTime; since now is block.timestamp that miners can manipulate within a block, the timing of withdrawals is security-critical and therefore timestamp-dependent."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"Collect sends ether to msg.sender via low-level call before reducing the recorded balance, so a reentrant sender can call Collect again and drain funds.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The ability to withdraw (Collect) depends on now > unlockTime; since now is block.timestamp that miners can manipulate within a block, the timing of withdrawals is security-critical and therefore timestamp-dependent.\"}]}",
+      "total_tokens": 1145,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.084,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "CashOut sends ether to msg.sender via call before decreasing their balance, and the only guard (block.number > lastBlock) remains true during the same block, allowing re-entrant withdrawals."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"CashOut sends ether to msg.sender via call before decreasing their balance, and the only guard (block.number > lastBlock) remains true during the same block, allowing re-entrant withdrawals.\"}]}",
+      "total_tokens": 1180,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 9.13,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In Collect(), the contract sends ether to msg.sender via low-level call before decreasing the sender’s recorded balance, allowing a re-entrant call to withdraw repeatedly."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The ability to withdraw (Collect) depends on now > acc.unlockTime, where unlockTime itself is set with now; this makes a security-critical decision rely on block.timestamp, fitting the timestamp-dependency category."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"In Collect(), the contract sends ether to msg.sender via low-level call before decreasing the sender’s recorded balance, allowing a re-entrant call to withdraw repeatedly.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The ability to withdraw (Collect) depends on now > acc.unlockTime, where unlockTime itself is set with now; this makes a security-critical decision rely on block.timestamp, fitting the timestamp-dependency category.\"}]}",
+      "total_tokens": 1244,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 5.012,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender via low-level call before reducing their balance, allowing the sender to reenter Collect and withdraw repeatedly, draining funds before the balance update occurs."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether to msg.sender via low-level call before reducing their balance, allowing the sender to reenter Collect and withdraw repeatedly, draining funds before the balance update occurs.\"}]}",
+      "total_tokens": 968,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.041,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In CashOut, msg.sender.call.value(_am)() is executed before balances[msg.sender] is reduced, so a malicious user can re-enter and withdraw repeatedly before the balance update."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"In CashOut, msg.sender.call.value(_am)() is executed before balances[msg.sender] is reduced, so a malicious user can re-enter and withdraw repeatedly before the balance update.\"}]}",
+      "total_tokens": 1029,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.588,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "CashOut sends ether to msg.sender via call before decrementing the sender’s balance, so a malicious recipient can re-enter CashOut and withdraw repeatedly, classic reentrancy bug."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"CashOut sends ether to msg.sender via call before decrementing the sender’s balance, so a malicious recipient can re-enter CashOut and withdraw repeatedly, classic reentrancy bug.\"}]}",
+      "total_tokens": 952,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 4.525,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "CashOut sends ETH with msg.sender.call before reducing the sender’s balance, so a malicious recipient can re-enter and withdraw repeatedly."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"confirmed\",\"reasoning\":\"CashOut sends ETH with msg.sender.call before reducing the sender’s balance, so a malicious recipient can re-enter and withdraw repeatedly.\"}]}",
+      "total_tokens": 890,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 9.114,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether via low-level msg.sender.call before the sender's balance is decreased, so a malicious holder can re-enter Collect and drain funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The ability to withdraw (now > acc.unlockTime) is gated directly by block.timestamp, allowing a miner-controlled sender to advance the timestamp and bypass the intended lock period."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether via low-level msg.sender.call before the sender's balance is decreased, so a malicious holder can re-enter Collect and drain funds.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The ability to withdraw (now > acc.unlockTime) is gated directly by block.timestamp, allowing a miner-controlled sender to advance the timestamp and bypass the intended lock period.\"}]}",
+      "total_tokens": 1808,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 11.484,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender via low-level call before decrementing the internal balance, allowing a reentrant call that can drain funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract relies on now (block.timestamp) to determine when funds can be withdrawn (unlockTime comparison), so a miner with slight control over the timestamp can influence this security-critical decision."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether to msg.sender via low-level call before decrementing the internal balance, allowing a reentrant call that can drain funds.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract relies on now (block.timestamp) to determine when funds can be withdrawn (unlockTime comparison), so a miner with slight control over the timestamp can influence this security-critical decision.\"}]}",
+      "total_tokens": 1148,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 13.244,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Collect() sends ether to msg.sender using call() before decrementing acc.balance, allowing a reentrant attacker to re-enter Collect and drain funds."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses now (block.timestamp) to set and check unlockTime; the withdrawal eligibility depends on a miner-controlled timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Collect() sends ether to msg.sender using call() before decrementing acc.balance, allowing a reentrant attacker to re-enter Collect and drain funds.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses now (block.timestamp) to set and check unlockTime; the withdrawal eligibility depends on a miner-controlled timestamp.\"}]}",
+      "total_tokens": 1137,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.169,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdrawBalance sends Ether via low-level call before resetting the sender's balance, allowing a reentrant call to withdrawBalance and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdrawBalance sends Ether via low-level call before resetting the sender's balance, allowing a reentrant call to withdrawBalance and drain funds.\"}]}",
+      "total_tokens": 727,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 20.626,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "State (balances and lastWithdrawTime) is updated after sending ether via low-level call to msg.sender, enabling a reentrant attacker to withdraw funds multiple times before their balance is reduced."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract uses now (block.timestamp) to enforce a 1-week cooldown on withdrawals; because miners can influence the timestamp, this security-critical check is susceptible to manipulation, fitting the timestamp-dependency category."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"State (balances and lastWithdrawTime) is updated after sending ether via low-level call to msg.sender, enabling a reentrant attacker to withdraw funds multiple times before their balance is reduced.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The contract uses now (block.timestamp) to enforce a 1-week cooldown on withdrawals; because miners can influence the timestamp, this security-critical check is susceptible to manipulation, fitting the timestamp-dependency category.\"}]}",
+      "total_tokens": 1137,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 15.001,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Modifier supportsToken performs an external call to msg.sender before tokenBalance is incremented, allowing a malicious contract to reenter airDrop() while the state is still unchanged, thus true reentrancy."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Modifier supportsToken performs an external call to msg.sender before tokenBalance is incremented, allowing a malicious contract to reenter airDrop() while the state is still unchanged, thus true reentrancy.\"}]}",
+      "total_tokens": 1039,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 8.523,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdraw sends ether to msg.sender via low-level call before decreasing their balance, allowing reentrant calls to drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdraw sends ether to msg.sender via low-level call before decreasing their balance, allowing reentrant calls to drain funds.\"}]}",
+      "total_tokens": 691,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [],
+      "tp": [],
+      "fp": [],
+      "fn": [
+        "reentrancy"
+      ],
+      "runtime_seconds": 0.0,
+      "model": "o3",
+      "slither_in_scope_findings": [],
+      "skipped_llm": true,
+      "skip_reason": "Slither reported zero in-scope findings",
+      "reviewed": [],
+      "confirmed_classes": [],
+      "rejected_classes": [],
+      "llm_response": "",
+      "total_tokens": 0,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 10.52,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdrawAll sends ether to msg.sender via low-level call before zeroing credit[msg.sender], allowing a reentrant call to withdrawAll and withdraw multiple times."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdrawAll sends ether to msg.sender via low-level call before zeroing credit[msg.sender], allowing a reentrant call to withdrawAll and withdraw multiple times.\"}]}",
+      "total_tokens": 801,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.383,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdrawBalance sends Ether via low-level call before resetting the sender's balance, enabling a malicious recipient to reenter and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdrawBalance sends Ether via low-level call before resetting the sender's balance, enabling a malicious recipient to reenter and drain funds.\"}]}",
+      "total_tokens": 652,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.782,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "withdrawBalance performs an external call to msg.sender (using call.value) before resetting the caller's balance to 0, enabling a re-entrant attacker to re-enter withdrawBalance and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"withdrawBalance performs an external call to msg.sender (using call.value) before resetting the caller's balance to 0, enabling a re-entrant attacker to re-enter withdrawBalance and drain funds.\"}]}",
+      "total_tokens": 698,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 3.111,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "In withdraw(), the contract sends Ether to msg.sender via low-level call.value() before reducing credit[msg.sender], enabling an attacker to re-enter withdraw and drain funds."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"In withdraw(), the contract sends Ether to msg.sender via low-level call.value() before reducing credit[msg.sender], enabling an attacker to re-enter withdraw and drain funds.\"}]}",
+      "total_tokens": 721,
+      "error": null
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 44.485,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "confirmed",
+          "reasoning": "Function LCOpenTimeout performs external calls (ETH transfer and arbitrary ERC-20 token transfer) before internal state is cleared (delete Channels[_lcID]), so a malicious token contract could re-enter prior to the state update."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "rejected",
+          "reasoning": "Timestamps are used only for time-lock style checks (e.g., require(now > timeout)); no randomness or economic calculation depends on them, so miner manipulation offers no meaningful advantage."
+        }
+      ],
+      "confirmed_classes": [
+        "reentrancy"
+      ],
+      "rejected_classes": [
+        "timestamp_dependency"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"confirmed\", \"reasoning\": \"Function LCOpenTimeout performs external calls (ETH transfer and arbitrary ERC-20 token transfer) before internal state is cleared (delete Channels[_lcID]), so a malicious token contract could re-enter prior to the state update.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"rejected\", \"reasoning\": \"Timestamps are used only for time-lock style checks (e.g., require(now > timeout)); no randomness or economic calculation depends on them, so miner manipulation offers no meaningful advantage.\"}]}",
+      "total_tokens": 10808,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 19.237,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "The external calls use .transfer, which forwards only 2300 gas, preventing the callee from re-entering play(); pot is reset after the calls but reentrancy is practically impossible."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The winner selection relies on uint(sha3(block.timestamp)), allowing the miner to influence the outcome; security-critical randomness depends on the timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"reentrancy\"}, \"decision\": \"rejected\", \"reasoning\": \"The external calls use .transfer, which forwards only 2300 gas, preventing the callee from re-entering play(); pot is reset after the calls but reentrancy is practically impossible.\"}, {\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"The winner selection relies on uint(sha3(block.timestamp)), allowing the miner to influence the outcome; security-critical randomness depends on the timestamp.\"}]}",
+      "total_tokens": 1416,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 15.262,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "reentrancy"
+          },
+          "decision": "rejected",
+          "reasoning": "resetInvestment sends ether before updating state, but it uses .send which forwards only 2300 gas; this prevents any meaningful re-entrant call back into the contract, so no exploitable reentrancy exists."
+        },
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "resetInvestment’s ability to release the jackpot depends on block.timestamp, allowing a miner to influence when the function can be executed, so the contract’s logic is timestamp-dependent."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [
+        "reentrancy"
+      ],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"reentrancy\"},\"decision\":\"rejected\",\"reasoning\":\"resetInvestment sends ether before updating state, but it uses .send which forwards only 2300 gas; this prevents any meaningful re-entrant call back into the contract, so no exploitable reentrancy exists.\"},{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"resetInvestment’s ability to release the jackpot depends on block.timestamp, allowing a miner to influence when the function can be executed, so the contract’s logic is timestamp-dependent.\"}]}",
+      "total_tokens": 1394,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 4.601,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "The contract’s draw() uses block.timestamp (via randomGen) to determine payout timing in payOut(); a miner can manipulate the timestamp to influence the condition and therefore the payout, so the timestamp dependency is real."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"The contract’s draw() uses block.timestamp (via randomGen) to determine payout timing in payOut(); a miner can manipulate the timestamp to influence the condition and therefore the payout, so the timestamp dependency is real.\"}]}",
+      "total_tokens": 855,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.961,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "Contract uses `now` (block.timestamp) in game logic (`now % 15 == 0`) to determine payouts, allowing miners to skew timestamp and influence outcome, so timestamp-dependency vulnerability is real."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\":[{\"original_finding\":{\"vuln_class\":\"timestamp_dependency\"},\"decision\":\"confirmed\",\"reasoning\":\"Contract uses `now` (block.timestamp) in game logic (`now % 15 == 0`) to determine payouts, allowing miners to skew timestamp and influence outcome, so timestamp-dependency vulnerability is real.\"}]}",
+      "total_tokens": 748,
+      "error": null
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 2.806,
+      "model": "o3",
+      "slither_in_scope_findings": [
+        "timestamp_dependency"
+      ],
+      "skipped_llm": false,
+      "skip_reason": null,
+      "reviewed": [
+        {
+          "original_finding": {
+            "vuln_class": "timestamp_dependency"
+          },
+          "decision": "confirmed",
+          "reasoning": "Function isSaleFinished relies directly on block.timestamp to determine sale completion, making behavior dependent on a miner-controlled timestamp."
+        }
+      ],
+      "confirmed_classes": [
+        "timestamp_dependency"
+      ],
+      "rejected_classes": [],
+      "llm_response": "{\"reviewed\": [{\"original_finding\": {\"vuln_class\": \"timestamp_dependency\"}, \"decision\": \"confirmed\", \"reasoning\": \"Function isSaleFinished relies directly on block.timestamp to determine sale completion, making behavior dependent on a miner-controlled timestamp.\"}]}",
+      "total_tokens": 673,
+      "error": null
+    }
+  ],
+  "run_index": 2,
+  "total_tokens_used": 62506,
+  "mean_tokens_per_contract": 1157.5,
+  "skipped_llm_contracts": 10,
+  "skip_rate": 0.1852,
+  "slither_in_scope_total": 57,
+  "confirmed_total": 51,
+  "rejected_total": 6
+}

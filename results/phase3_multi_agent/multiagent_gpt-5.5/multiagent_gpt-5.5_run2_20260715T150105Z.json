@@ -1,0 +1,4157 @@
+{
+  "tool": "multiagent_gpt-5.5",
+  "num_contracts": 54,
+  "total_runtime_seconds": 1464.345,
+  "mean_runtime_seconds": 27.117,
+  "per_class": {
+    "reentrancy": {
+      "tp": 31,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "access_control": {
+      "tp": 18,
+      "fp": 10,
+      "fn": 0,
+      "precision": 0.642857,
+      "recall": 1.0,
+      "f1": 0.782609
+    },
+    "timestamp_dependency": {
+      "tp": 5,
+      "fp": 7,
+      "fn": 0,
+      "precision": 0.416667,
+      "recall": 1.0,
+      "f1": 0.588235
+    }
+  },
+  "overall": {
+    "micro": {
+      "tp": 54,
+      "fp": 17,
+      "fn": 0,
+      "precision": 0.760563,
+      "recall": 1.0,
+      "f1": 0.864
+    },
+    "macro": {
+      "precision": 0.686508,
+      "recall": 1.0,
+      "f1": 0.790281
+    }
+  },
+  "contracts": [
+    {
+      "contract_id": "access_control/FibonacciBalance.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 45.024,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 465,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 1045,
+          "runtime_seconds": 7.84,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1344,
+          "runtime_seconds": 10.007,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"The public withdraw function performs a delegatecall into fibonacciLibrary and then transfers Ether to msg.sender without any owner/role restriction. This allows any caller to trigger contract Ether withdrawals based on mutable delegatecall-controlled state.\"},{\"vuln_class\":\"access_control\",\"function\":\"fallback\",\"line\":38,\"reasoning\":\"The public fallback function delegates arbitrary calldata to fibonacciLibrary without access control. Because delegatecall writes to the caller's storage, an attacker can invoke library functions such as setStart(uint) to overwrite critical storage such as fibonacciLibrary and gain control over subsequent delegatecalls.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 709,
+          "runtime_seconds": 3.028,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 2574,
+        "runtime_seconds": 35.016,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"withdraw is publicly callable and performs a delegatecall to fibonacciLibrary before transferring contract Ether to msg.sender. Because the delegated state is mutable and the library address can be corrupted via delegatecall storage writes, unauthorized callers can influence withdrawal behavior and drain funds.\"},{\"vuln_class\":\"access_control\",\"function\":\"fallback\",\"line\":38,\"reasoning\":\"The public fallback delegates arbitrary calldata to fibonacciLibrary with no restriction. Since delegatecall writes to this contract's storage using the library layout, callers can invoke functions such as setStart(uint) to overwrite critical storage like fibonacciLibrary and redirect future delegatecalls.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1045,
+        "access_control_specialist": 1344,
+        "timestamp_dependency_specialist": 709,
+        "moderator": 2574
+      },
+      "total_tokens": 5672,
+      "specialist_runtime_seconds": 10.008,
+      "moderator_runtime_seconds": 35.016
+    },
+    {
+      "contract_id": "access_control/arbitrary_location_write_simple.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 21.863,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 269,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 598,
+          "runtime_seconds": 3.727,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1182,
+          "runtime_seconds": 11.655,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"PopBonusCode\",\"line\":25,\"reasoning\":\"This function is publicly callable and can underflow the dynamic array length, enabling arbitrary storage writes via UpdateBonusCodeAt. An attacker can use this to overwrite the owner variable and then call the otherwise owner-protected Destroy function.\"},{\"vuln_class\":\"access_control\",\"function\":\"UpdateBonusCodeAt\",\"line\":31,\"reasoning\":\"Because PopBonusCode can make bonusCodes.length extremely large, this public function can be used by an unauthorised caller to write to storage slots including the owner slot. This allows takeover of ownership and access to privileged selfdestruct functionality.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 536,
+          "runtime_seconds": 1.926,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 1338,
+        "runtime_seconds": 10.204,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"PopBonusCode\",\"line\":28,\"reasoning\":\"PopBonusCode is publicly callable and can underflow bonusCodes.length when the array is empty because the preceding require is always true for an unsigned length. Once length is maximized, UpdateBonusCodeAt can write to arbitrary storage slots, allowing an attacker to overwrite owner and invoke the protected Destroy function.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 598,
+        "access_control_specialist": 1182,
+        "timestamp_dependency_specialist": 536,
+        "moderator": 1338
+      },
+      "total_tokens": 3654,
+      "specialist_runtime_seconds": 11.657,
+      "moderator_runtime_seconds": 10.204
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.648,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 178,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 616,
+          "runtime_seconds": 5.136,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 543,
+          "runtime_seconds": 3.208,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"IamMissing\",\"line\":20,\"reasoning\":\"The intended constructor is misnamed as IamMissing instead of Missing, making it a public function callable after deployment. Any caller can set themselves as owner and then use the owner-only withdraw function to drain the contract balance.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 453,
+          "runtime_seconds": 1.572,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 767,
+        "runtime_seconds": 4.51,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"IamMissing\",\"line\":20,\"reasoning\":\"The intended constructor is misnamed as IamMissing instead of Missing, so it is a public function callable after deployment. Any caller can set themselves as owner and then call withdraw to drain the contract balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 616,
+        "access_control_specialist": 543,
+        "timestamp_dependency_specialist": 453,
+        "moderator": 767
+      },
+      "total_tokens": 2379,
+      "specialist_runtime_seconds": 5.137,
+      "moderator_runtime_seconds": 4.51
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 11.337,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 142,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 529,
+          "runtime_seconds": 4.384,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 679,
+          "runtime_seconds": 5.446,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"missing\",\"line\":18,\"reasoning\":\"The function `missing()` is intended to be the constructor but is incorrectly named with lowercase, so in Solidity 0.4.24 it is a public function callable by anyone. An attacker can call it to set themselves as `owner` and then invoke `withdraw()` to drain the contract balance.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 426,
+          "runtime_seconds": 1.647,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 826,
+        "runtime_seconds": 5.887,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"missing\",\"line\":18,\"reasoning\":\"The function `missing()` is publicly callable and is not a constructor because its name does not exactly match the contract name `Missing`. Any caller can set themselves as `owner` and then call `withdraw()` to drain the contract balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 529,
+        "access_control_specialist": 679,
+        "timestamp_dependency_specialist": 426,
+        "moderator": 826
+      },
+      "total_tokens": 2460,
+      "specialist_runtime_seconds": 5.447,
+      "moderator_runtime_seconds": 5.887
+    },
+    {
+      "contract_id": "access_control/incorrect_constructor_name3.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 10.602,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 143,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 592,
+          "runtime_seconds": 5.275,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 563,
+          "runtime_seconds": 3.655,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"Constructor\",\"line\":17,\"reasoning\":\"This function is intended to be the constructor but is incorrectly named, so in Solidity 0.4.24 it is a normal public function callable by anyone. An attacker can call it to become owner and then use the owner-only withdraw function to drain the contract balance.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 427,
+          "runtime_seconds": 1.933,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 767,
+        "runtime_seconds": 5.325,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"Constructor\",\"line\":17,\"reasoning\":\"The function named Constructor is not a valid constructor for contract Missing in Solidity 0.4.24, so it is a normal public function callable by anyone. An attacker can call it to set themselves as owner and then call withdraw to drain the contract balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 592,
+        "access_control_specialist": 563,
+        "timestamp_dependency_specialist": 427,
+        "moderator": 767
+      },
+      "total_tokens": 2349,
+      "specialist_runtime_seconds": 5.276,
+      "moderator_runtime_seconds": 5.325
+    },
+    {
+      "contract_id": "access_control/mapping_write.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 16.626,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 198,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 598,
+          "runtime_seconds": 4.198,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 904,
+          "runtime_seconds": 8.523,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"set\",\"line\":20,\"reasoning\":\"The public set() function allows any caller to resize and write to the dynamic array at an arbitrary index. Because array storage can be indexed to collide with slot 0, an attacker can overwrite the owner variable and then pass the withdraw() owner check.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 487,
+          "runtime_seconds": 1.73,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 988,
+        "runtime_seconds": 8.102,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"set\",\"line\":20,\"reasoning\":\"The public set() function lets any caller resize and write to the dynamic array at an arbitrary index. In Solidity 0.4.x, a crafted index can make map[key] write to storage slot 0 and overwrite owner, allowing the attacker to satisfy withdraw()'s owner check.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 598,
+        "access_control_specialist": 904,
+        "timestamp_dependency_specialist": 487,
+        "moderator": 988
+      },
+      "total_tokens": 2977,
+      "specialist_runtime_seconds": 8.524,
+      "moderator_runtime_seconds": 8.102
+    },
+    {
+      "contract_id": "access_control/multiowned_vulnerable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 17.86,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 744,
+          "runtime_seconds": 4.902,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 971,
+          "runtime_seconds": 6.483,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"newOwner\",\"line\":38,\"reasoning\":\"The function adds an address to the owners mapping but lacks the onlyOwner modifier, allowing any external caller to make themselves or another address an owner. Once added as an owner, an attacker can call privileged functions such as withdrawAll().\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 659,
+          "runtime_seconds": 1.853,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 982,
+        "runtime_seconds": 11.374,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"newOwner\",\"line\":38,\"reasoning\":\"newOwner modifies the owners mapping but lacks the onlyOwner modifier, so any external caller can add themselves or another address as an owner. An attacker who becomes an owner can then invoke privileged functions such as withdrawAll().\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 744,
+        "access_control_specialist": 971,
+        "timestamp_dependency_specialist": 659,
+        "moderator": 982
+      },
+      "total_tokens": 3356,
+      "specialist_runtime_seconds": 6.484,
+      "moderator_runtime_seconds": 11.374
+    },
+    {
+      "contract_id": "access_control/mycontract.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 13.524,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 131,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 634,
+          "runtime_seconds": 6.286,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 670,
+          "runtime_seconds": 5.03,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sendTo\",\"line\":20,\"reasoning\":\"Authorization uses tx.origin instead of msg.sender, so a malicious contract can cause the owner to initiate a transaction that passes this check. This allows an unauthorised party to trigger Ether transfers from the contract.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 422,
+          "runtime_seconds": 10.452,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 673,
+        "runtime_seconds": 3.068,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sendTo\",\"line\":20,\"reasoning\":\"Authorization is based on tx.origin rather than msg.sender. A malicious contract can trick the owner into initiating a transaction, causing this check to pass and allowing unauthorized Ether transfers from the contract.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 634,
+        "access_control_specialist": 670,
+        "timestamp_dependency_specialist": 422,
+        "moderator": 673
+      },
+      "total_tokens": 2399,
+      "specialist_runtime_seconds": 10.454,
+      "moderator_runtime_seconds": 3.068
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_1.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 144.505,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 4127,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 8358,
+          "runtime_seconds": 53.998,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"confirm\", \"line\": 278, \"reasoning\": \"The transaction target is called with value before `delete m_txs[_h]` clears the pending transaction. A malicious callee that is or controls wallet owners can re-enter `confirm(_h)` while the transaction record still exists and execute the same transaction again.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 5069,
+          "runtime_seconds": 9.731,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":223,\"reasoning\":\"initWallet is public and has no owner check or one-time initialization guard, allowing an arbitrary caller to reinitialize ownership and daily-limit state. In the library context this can let an attacker become an owner and then authorize sensitive actions such as kill.\"},{\"vuln_class\":\"access_control\",\"function\":\"fallback\",\"line\":437,\"reasoning\":\"The Wallet fallback delegates arbitrary calldata to the library without whitelisting or restricting callable functions. This allows unauthorised users to invoke unprotected library initializers like initWallet in the wallet's storage context and take over ownership.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 7032,
+          "runtime_seconds": 30.754,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"execute\",\"line\":252,\"reasoning\":\"The multisig operation hash is derived using block.number, so the block in which the transaction is included changes the security-critical confirmation identifier. A block producer can influence inclusion timing, affecting the pending transaction hash used for confirmations.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"today\",\"line\":362,\"reasoning\":\"The daily spending window is calculated from now and used by underLimit to reset m_spentToday and allow withdrawals under the daily limit. Miners/validators can skew block timestamps near a day boundary, potentially causing the spend limit to reset earlier or later than intended.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 9671,
+        "runtime_seconds": 90.503,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":223,\"reasoning\":\"initWallet is publicly callable and lacks any owner check or one-time initialization guard. Because Wallet's fallback delegates arbitrary calldata to the library, any caller can invoke this initializer in the wallet storage context, reset the owners/requirement, and take control of the wallet.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 8358,
+        "access_control_specialist": 5069,
+        "timestamp_dependency_specialist": 7032,
+        "moderator": 9671
+      },
+      "total_tokens": 30130,
+      "specialist_runtime_seconds": 54.0,
+      "moderator_runtime_seconds": 90.503
+    },
+    {
+      "contract_id": "access_control/parity_wallet_bug_2.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 140.376,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 3589,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 6568,
+          "runtime_seconds": 39.185,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"confirm\",\"line\":285,\"reasoning\":\"The function performs an external call to `m_txs[_h].to.call.value(...)` before deleting `m_txs[_h]`. A malicious recipient that can satisfy the owner confirmation check could re-enter `confirm(_h)` before the transaction is deleted and execute the same pending transfer multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 7201,
+          "runtime_seconds": 42.681,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initMultiowned\",\"line\":112,\"reasoning\":\"This public initializer sets the owner set and required confirmations, but it is protected only by an uninitialized-state check and not by any authorized deployer/owner check. On an uninitialized deployment, any caller can make themselves an owner and choose the required threshold.\"},{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":226,\"reasoning\":\"This public initializer configures ownership and the daily limit, but any address can call it while the contract is uninitialized. An attacker can initialize the library/wallet with themselves as owner, gaining control over owner-gated sensitive actions.\"},{\"vuln_class\":\"access_control\",\"function\":\"kill\",\"line\":233,\"reasoning\":\"Although guarded by onlymanyowners, that guard can be bypassed in practice because an attacker can first claim ownership through the unprotected initializer. The attacker can then call this selfdestruct function and destroy the contract, sending funds to an address they choose.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 7140,
+          "runtime_seconds": 47.699,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"underLimit\",\"line\":352,\"reasoning\":\"The daily spend limit reset depends on today(), which is derived from now/block.timestamp. Because this controls whether funds can be transferred under the single-owner daily limit, a miner/validator could slightly influence execution around a day boundary.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"execute\",\"line\":254,\"reasoning\":\"The pending transaction operation hash includes block.number and that hash is used to track confirmations for fund-moving multisig transactions. Since block.number is block-producer-influenced via transaction inclusion timing, it affects a security-critical authorization identifier.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 9150,
+        "runtime_seconds": 92.674,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":226,\"reasoning\":\"The wallet/library initialization is protected only by the uninitialized-state check, so any caller can initialize an uninitialized instance and make themselves an owner with a chosen threshold. Once ownership is claimed this way, the attacker can invoke owner-gated sensitive functions such as kill.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 6568,
+        "access_control_specialist": 7201,
+        "timestamp_dependency_specialist": 7140,
+        "moderator": 9150
+      },
+      "total_tokens": 30059,
+      "specialist_runtime_seconds": 47.701,
+      "moderator_runtime_seconds": 92.674
+    },
+    {
+      "contract_id": "access_control/phishable.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.264,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 121,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 514,
+          "runtime_seconds": 4.555,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 607,
+          "runtime_seconds": 5.403,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdrawAll\",\"line\":20,\"reasoning\":\"The function authorises withdrawals using tx.origin instead of msg.sender. A malicious contract can trick the owner into initiating a transaction that calls withdrawAll and drains the balance to an attacker-controlled recipient.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 417,
+          "runtime_seconds": 2.354,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 664,
+        "runtime_seconds": 3.859,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdrawAll\",\"line\":20,\"reasoning\":\"The function authorizes withdrawals using tx.origin instead of msg.sender. A malicious contract can trick the owner into initiating a transaction that calls withdrawAll and drains the contract balance to an attacker-controlled recipient.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 514,
+        "access_control_specialist": 607,
+        "timestamp_dependency_specialist": 417,
+        "moderator": 664
+      },
+      "total_tokens": 2202,
+      "specialist_runtime_seconds": 5.404,
+      "moderator_runtime_seconds": 3.859
+    },
+    {
+      "contract_id": "access_control/proxy.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.695,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 120,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 455,
+          "runtime_seconds": 4.049,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 645,
+          "runtime_seconds": 5.785,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"forward\",\"line\":19,\"reasoning\":\"The public forward function performs a delegatecall to an arbitrary callee with arbitrary data without restricting access to the owner or another trusted role. Any user can execute code in the proxy's context, potentially modifying storage such as owner or triggering other sensitive effects.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 416,
+          "runtime_seconds": 1.693,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 694,
+        "runtime_seconds": 3.908,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"forward\",\"line\":19,\"reasoning\":\"The public forward function performs a delegatecall to an arbitrary callee with arbitrary calldata without restricting access to the owner or another trusted role. Any caller can execute code in the proxy's storage context, potentially modifying state such as the owner variable or causing other privileged effects.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 455,
+        "access_control_specialist": 645,
+        "timestamp_dependency_specialist": 416,
+        "moderator": 694
+      },
+      "total_tokens": 2210,
+      "specialist_runtime_seconds": 5.786,
+      "moderator_runtime_seconds": 3.908
+    },
+    {
+      "contract_id": "access_control/rubixi.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 28.42,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 1593,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 2837,
+          "runtime_seconds": 17.398,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"addPayout\", \"line\": 74, \"reasoning\": \"The contract sends ether to participants before decrementing balance and incrementing payoutOrder. A malicious participant fallback could attempt to re-enter before the payout state is advanced, though send's gas stipend limits practical exploitability.\"}, {\"vuln_class\": \"reentrancy\", \"function\": \"collectAllFees\", \"line\": 85, \"reasoning\": \"The contract sends collectedFees to creator before setting collectedFees to zero. If creator is a contract, its fallback could attempt to re-enter while the fee balance is still unchanged.\"}, {\"vuln_class\": \"reentrancy\", \"function\": \"collectFeesInEther\", \"line\": 95, \"reasoning\": \"The contract sends ether to creator before reducing collectedFees. If creator is a contract, it could attempt to re-enter while the old collectedFees value is still present.\"}, {\"vuln_class\": \"reentrancy\", \"function\": \"collectPercentOfFees\", \"line\": 103, \"reasoning\": \"The contract sends ether to creator before subtracting feesToCollect from collectedFees. If creator is a contract, it could attempt to re-enter before the state update occurs.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1735,
+          "runtime_seconds": 4.422,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"DynamicPyramid\",\"line\":23,\"reasoning\":\"This function is intended to be the constructor but is misnamed, so it remains publicly callable after deployment. Any caller can set themselves as creator and then pass onlyowner checks to withdraw fees or change owner and critical parameters.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 1565,
+          "runtime_seconds": 2.099,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 2495,
+        "runtime_seconds": 11.021,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"DynamicPyramid\",\"line\":23,\"reasoning\":\"This function is misnamed and therefore is not the constructor for contract Rubixi, leaving it publicly callable after deployment. Any caller can set themselves as creator and then pass onlyowner checks to withdraw fees or change privileged parameters.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 2837,
+        "access_control_specialist": 1735,
+        "timestamp_dependency_specialist": 1565,
+        "moderator": 2495
+      },
+      "total_tokens": 8632,
+      "specialist_runtime_seconds": 17.399,
+      "moderator_runtime_seconds": 11.021
+    },
+    {
+      "contract_id": "access_control/simple_suicide.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.934,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 91,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 444,
+          "runtime_seconds": 2.896,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 569,
+          "runtime_seconds": 3.827,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sudicideAnyone\",\"line\":12,\"reasoning\":\"The function is publicly callable and executes selfdestruct without any owner or role check. Any external account can destroy the contract and redirect its remaining Ether to themselves.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 389,
+          "runtime_seconds": 1.688,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 644,
+        "runtime_seconds": 3.103,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"sudicideAnyone\",\"line\":12,\"reasoning\":\"The function is publicly callable and executes selfdestruct without any owner or role check. Any external account can destroy the contract and redirect its remaining Ether to themselves.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 444,
+        "access_control_specialist": 569,
+        "timestamp_dependency_specialist": 389,
+        "moderator": 644
+      },
+      "total_tokens": 2046,
+      "specialist_runtime_seconds": 3.829,
+      "moderator_runtime_seconds": 3.103
+    },
+    {
+      "contract_id": "access_control/unprotected0.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 18.799,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 185,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 457,
+          "runtime_seconds": 1.866,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 547,
+          "runtime_seconds": 2.842,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"changeOwner\",\"line\":25,\"reasoning\":\"The changeOwner function updates the contract owner but is public and lacks the onlyowner modifier or any equivalent authorization check. Any address can call it to take ownership or assign ownership to another address.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 460,
+          "runtime_seconds": 10.99,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 679,
+        "runtime_seconds": 7.807,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"changeOwner\",\"line\":25,\"reasoning\":\"The changeOwner function updates the owner state variable but is public and has no onlyowner modifier or equivalent authorization check. Any address can call it to take ownership or assign ownership to another address.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 457,
+        "access_control_specialist": 547,
+        "timestamp_dependency_specialist": 460,
+        "moderator": 679
+      },
+      "total_tokens": 2143,
+      "specialist_runtime_seconds": 10.991,
+      "moderator_runtime_seconds": 7.807
+    },
+    {
+      "contract_id": "access_control/wallet_02_refund_nosub.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 20.513,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 319,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1187,
+          "runtime_seconds": 12.164,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"withdraw\", \"line\": 30, \"reasoning\": \"The function transfers Ether to msg.sender before reducing balances[msg.sender], so a reentrant recipient could attempt to call back and withdraw again before the balance is updated.\"}, {\"vuln_class\": \"reentrancy\", \"function\": \"refund\", \"line\": 36, \"reasoning\": \"The function transfers the caller's recorded balance without clearing or reducing it, allowing the same balance to be paid repeatedly; if re-entered during the external transfer, the caller can repeat the refund before any state change occurs.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 846,
+          "runtime_seconds": 9.743,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"refund\",\"line\":36,\"reasoning\":\"The refund function is publicly callable and transfers Ether based on the caller's stored balance without reducing that balance or otherwise preventing repeated withdrawals. Any user with a positive recorded balance can repeatedly call it to withdraw more Ether than they are authorised to receive, potentially draining the contract.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 563,
+          "runtime_seconds": 1.926,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 1224,
+        "runtime_seconds": 8.334,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"refund\",\"line\":36,\"reasoning\":\"refund() is publicly callable and transfers the caller's recorded balance without clearing or reducing it. A user with any positive balance can call it repeatedly to withdraw more than their authorized balance and drain contract funds.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1187,
+        "access_control_specialist": 846,
+        "timestamp_dependency_specialist": 563,
+        "moderator": 1224
+      },
+      "total_tokens": 3820,
+      "specialist_runtime_seconds": 12.173,
+      "moderator_runtime_seconds": 8.334
+    },
+    {
+      "contract_id": "access_control/wallet_03_wrong_constructor.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 13.681,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 275,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 852,
+          "runtime_seconds": 7.779,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The function performs an external transfer to msg.sender before decrementing balances[msg.sender]. Although transfer forwards limited gas, the contract updates its accounting only after the external call, matching the reentrancy pattern.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 802,
+          "runtime_seconds": 6.369,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":19,\"reasoning\":\"The initializer-like function is public and unprotected, allowing any address to set itself as creator. An attacker can then call migrateTo to transfer the contract's entire Ether balance.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 535,
+          "runtime_seconds": 1.726,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 999,
+        "runtime_seconds": 5.9,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"initWallet\",\"line\":19,\"reasoning\":\"initWallet is a public, unprotected initializer-like function rather than a constructor, so any address can set itself as creator. That address can then call migrateTo to transfer the contract's entire Ether balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 852,
+        "access_control_specialist": 802,
+        "timestamp_dependency_specialist": 535,
+        "moderator": 999
+      },
+      "total_tokens": 3188,
+      "specialist_runtime_seconds": 7.779,
+      "moderator_runtime_seconds": 5.9
+    },
+    {
+      "contract_id": "access_control/wallet_04_confused_sign.sol",
+      "gt_classes": [
+        "access_control"
+      ],
+      "pred_classes": [
+        "access_control"
+      ],
+      "tp": [
+        "access_control"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 17.558,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 286,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 965,
+          "runtime_seconds": 8.837,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":31,\"reasoning\":\"The function sends Ether to msg.sender via transfer before decrementing balances[msg.sender], so control is handed to the recipient before the contract updates its accounting. Although the require condition is also incorrect, the reentrancy-relevant issue is the external call occurring before the state update.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 761,
+          "runtime_seconds": 5.692,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The withdrawal authorization check uses the wrong comparison, requiring amount >= balances[msg.sender] instead of ensuring the caller has at least the requested balance. As a result, any caller, including one with zero balance, can withdraw arbitrary Ether from the contract.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 541,
+          "runtime_seconds": 2.629,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "access_control"
+        ],
+        "total_tokens": 1147,
+        "runtime_seconds": 8.718,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"withdraw\",\"line\":30,\"reasoning\":\"The withdrawal check is inverted: it requires amount >= balances[msg.sender] instead of requiring the caller's balance to cover the withdrawal. A caller with zero or insufficient recorded balance can therefore withdraw arbitrary Ether from the contract, limited only by the contract balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 965,
+        "access_control_specialist": 761,
+        "timestamp_dependency_specialist": 541,
+        "moderator": 1147
+      },
+      "total_tokens": 3414,
+      "specialist_runtime_seconds": 8.838,
+      "moderator_runtime_seconds": 8.718
+    },
+    {
+      "contract_id": "reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 19.208,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1129,
+          "runtime_seconds": 7.343,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1319,
+          "runtime_seconds": 9.114,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":19,\"reasoning\":\"SetMinSum changes the critical MinSum parameter but is public and has no owner or role check. Any address can change it before intitalized is set to true.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":26,\"reasoning\":\"SetLogFile changes the Log contract address but is public and lacks authorization. Any address can redirect logging to an arbitrary contract before initialization is locked.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":33,\"reasoning\":\"Initialized is public and unprotected, allowing any address to permanently set intitalized to true. This can lock configuration and prevent the intended administrator from setting critical parameters.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 798,
+          "runtime_seconds": 2.989,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1509,
+        "runtime_seconds": 10.091,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"Collect sends Ether to msg.sender using call.value(_am)() before decrementing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw multiple times before its recorded balance is reduced.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":null,\"reasoning\":\"SetMinSum, SetLogFile, and Initialized are public and have no owner or role check, so any address can configure MinSum, redirect the LogFile address, or permanently lock initialization. This exposes critical configuration to unauthorized callers before intitalized is set.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1129,
+        "access_control_specialist": 1319,
+        "timestamp_dependency_specialist": 798,
+        "moderator": 1509
+      },
+      "total_tokens": 4755,
+      "specialist_runtime_seconds": 9.115,
+      "moderator_runtime_seconds": 10.091
+    },
+    {
+      "contract_id": "reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 13.646,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 346,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 896,
+          "runtime_seconds": 6.596,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":38,\"reasoning\":\"The function sends ether to msg.sender using a low-level call before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 728,
+          "runtime_seconds": 3.787,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 659,
+          "runtime_seconds": 2.247,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 1005,
+        "runtime_seconds": 7.047,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":38,\"reasoning\":\"CashOut performs a low-level call sending ether to msg.sender before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during this external call and withdraw repeatedly before their recorded balance is reduced.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 896,
+        "access_control_specialist": 728,
+        "timestamp_dependency_specialist": 659,
+        "moderator": 1005
+      },
+      "total_tokens": 3288,
+      "specialist_runtime_seconds": 6.598,
+      "moderator_runtime_seconds": 7.047
+    },
+    {
+      "contract_id": "reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 28.441,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 425,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1165,
+          "runtime_seconds": 7.032,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing balances[msg.sender]. A malicious recipient can re-enter Collect during this external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1394,
+          "runtime_seconds": 9.622,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":19,\"reasoning\":\"SetMinSum changes the critical MinSum parameter but is public and has no owner or role check; before initialization, any address can set it to an arbitrary value.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":26,\"reasoning\":\"SetLogFile changes the LogFile contract address but is public and has no owner or role check; before initialization, any address can redirect logging to an arbitrary contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":33,\"reasoning\":\"Initialized is public and unprotected, allowing any address to finalize/lock the configuration state and prevent intended authorized setup.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 798,
+          "runtime_seconds": 3.8,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 2167,
+        "runtime_seconds": 18.817,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"Collect sends Ether to msg.sender via call.value(_am)() before reducing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw multiple times against the same recorded balance.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":19,\"reasoning\":\"The configuration functions SetMinSum, SetLogFile, and Initialized are public and have no owner or role check. Any address can alter setup before initialization or call Initialized to permanently lock the configuration.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1165,
+        "access_control_specialist": 1394,
+        "timestamp_dependency_specialist": 798,
+        "moderator": 2167
+      },
+      "total_tokens": 5524,
+      "specialist_runtime_seconds": 9.623,
+      "moderator_runtime_seconds": 18.817
+    },
+    {
+      "contract_id": "reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 20.034,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 408,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1045,
+          "runtime_seconds": 6.2,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before decrementing balances[msg.sender]. A malicious recipient can re-enter Collect during this external call and withdraw repeatedly before their balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1227,
+          "runtime_seconds": 8.425,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":19,\"reasoning\":\"SetMinSum is public and has no owner or role check, so any address can set the critical MinSum parameter before the contract is initialized.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":26,\"reasoning\":\"SetLogFile is public and lacks access control, allowing any address to choose the LogFile contract before initialization, which controls an external logging call target.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":33,\"reasoning\":\"Initialized is public and unprotected, so any address can permanently mark the contract as initialized and prevent legitimate configuration of MinSum and LogFile.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 792,
+          "runtime_seconds": 3.578,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1608,
+        "runtime_seconds": 11.606,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"Collect sends Ether to msg.sender using call.value(_am)() before decrementing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before their balance is updated.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":19,\"reasoning\":\"The initialization/configuration functions SetMinSum, SetLogFile, and Initialized are public and have no owner or role check. Any address can set critical parameters or permanently mark the contract initialized, preventing legitimate configuration.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1045,
+        "access_control_specialist": 1227,
+        "timestamp_dependency_specialist": 792,
+        "moderator": 1608
+      },
+      "total_tokens": 4672,
+      "specialist_runtime_seconds": 8.427,
+      "moderator_runtime_seconds": 11.606
+    },
+    {
+      "contract_id": "reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 22.843,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1057,
+          "runtime_seconds": 5.749,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function sends Ether to msg.sender via a low-level call before decrementing balances[msg.sender]. A malicious recipient can re-enter Collect during the call and withdraw repeatedly before its balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1336,
+          "runtime_seconds": 9.882,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":19,\"reasoning\":\"SetMinSum changes the critical MinSum parameter but is public and has no owner or role check; any address can call it before initialization.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":26,\"reasoning\":\"SetLogFile changes the LogFile contract address but is public and lacks authorization; any address can set an arbitrary log contract before initialization.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":33,\"reasoning\":\"Initialized is public and unprotected, allowing any address to permanently lock initialization and prevent legitimate configuration changes.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 748,
+          "runtime_seconds": 2.319,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1596,
+        "runtime_seconds": 12.958,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"Collect sends Ether to msg.sender using a low-level call before decrementing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before its recorded balance is reduced.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":19,\"reasoning\":\"The initialization/configuration functions SetMinSum, SetLogFile, and Initialized are public and have no owner or role restriction. Any address can set critical parameters or permanently lock initialization before the legitimate deployer configures the contract.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1057,
+        "access_control_specialist": 1336,
+        "timestamp_dependency_specialist": 748,
+        "moderator": 1596
+      },
+      "total_tokens": 4737,
+      "specialist_runtime_seconds": 9.884,
+      "moderator_runtime_seconds": 12.958
+    },
+    {
+      "contract_id": "reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 109.723,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 435,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1150,
+          "runtime_seconds": 10.176,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"WithdrawToHolder\",\"line\":94,\"reasoning\":\"The function sends Ether with `_addr.call.value(_wei)()` before updating `Holders[_addr]`. A malicious recipient can re-enter while their holder balance is still nonzero and repeat withdrawals before the balance is decremented.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1813,
+          "runtime_seconds": 19.575,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"initTokenBank\", \"line\": 53, \"reasoning\": \"The constructor-like initializer is public and has no access control, so any address can call it after deployment. This lets an unauthorized party reset MinDeposit and assign the owner variable in this inheritance scope.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 734,
+          "runtime_seconds": 11.701,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 5719,
+        "runtime_seconds": 90.145,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"WithdrawToHolder\",\"line\":94,\"reasoning\":\"The function performs a low-level Ether call to `_addr` before updating `Holders[_addr]`, leaving state inconsistent during the external call. If the recipient can reenter with owner privileges, it can withdraw repeatedly while its holder balance is still nonzero.\"},{\"vuln_class\":\"access_control\",\"function\":\"initTokenBank\",\"line\":53,\"reasoning\":\"`initTokenBank` is a public initializer with no owner check or single-use guard, so it can be invoked after deployment by any address. This allows an unauthorized caller to reset `MinDeposit` and write the shadowed `owner` variable in this contract scope.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1150,
+        "access_control_specialist": 1813,
+        "timestamp_dependency_specialist": 734,
+        "moderator": 5719
+      },
+      "total_tokens": 9416,
+      "specialist_runtime_seconds": 19.576,
+      "moderator_runtime_seconds": 90.145
+    },
+    {
+      "contract_id": "reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 17.113,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 918,
+          "runtime_seconds": 5.761,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender via a low-level call before decrementing acc.balance. A malicious recipient can re-enter Collect during the call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 779,
+          "runtime_seconds": 3.792,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1120,
+          "runtime_seconds": 8.481,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition uses `now > acc.unlockTime` to decide whether funds can be collected. Since `now`/`block.timestamp` can be influenced within a small window by miners/validators, it affects a funds-controlling deadline.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1269,
+        "runtime_seconds": 8.627,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before decrementing the sender's recorded balance. A malicious recipient can re-enter Collect during the external call and withdraw multiple times before the balance is updated.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition depends on now via `now > acc.unlockTime`. Because block timestamps can be influenced slightly by miners or validators, this affects the timing of a funds-controlling withdrawal condition.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 918,
+        "access_control_specialist": 779,
+        "timestamp_dependency_specialist": 1120,
+        "moderator": 1269
+      },
+      "total_tokens": 4086,
+      "specialist_runtime_seconds": 8.483,
+      "moderator_runtime_seconds": 8.627
+    },
+    {
+      "contract_id": "reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 18.342,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 409,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 741,
+          "runtime_seconds": 3.436,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":52,\"reasoning\":\"CashOut sends Ether to msg.sender via low-level call before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1086,
+          "runtime_seconds": 8.38,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"setLog\",\"line\":31,\"reasoning\":\"The onlyOwner modifier authorizes using tx.origin instead of msg.sender, so a malicious contract can call setLog during a transaction initiated by the owner and pass the check. Since setLog changes the logging contract address, this is a critical parameter change reachable through tx.origin phishing.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 720,
+          "runtime_seconds": 11.94,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1191,
+        "runtime_seconds": 6.395,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":52,\"reasoning\":\"CashOut performs a low-level Ether transfer to msg.sender before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the call and withdraw repeatedly before their balance is updated.\"},{\"vuln_class\":\"access_control\",\"function\":\"setLog\",\"line\":31,\"reasoning\":\"The onlyOwner modifier checks tx.origin instead of msg.sender. A malicious contract can trick the owner into initiating a transaction and then call setLog while tx.origin remains the owner, bypassing intended direct authorization.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 741,
+        "access_control_specialist": 1086,
+        "timestamp_dependency_specialist": 720,
+        "moderator": 1191
+      },
+      "total_tokens": 3738,
+      "specialist_runtime_seconds": 11.944,
+      "moderator_runtime_seconds": 6.395
+    },
+    {
+      "contract_id": "reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 16.042,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 892,
+          "runtime_seconds": 4.457,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing acc.balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 843,
+          "runtime_seconds": 5.097,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1096,
+          "runtime_seconds": 7.718,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition depends on `now > acc.unlockTime`, so miner/validator influence over the block timestamp can affect whether funds are withdrawable in a given block. `Put` also uses `now` to set `unlockTime`, making the fund-locking logic timestamp-dependent.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1324,
+        "runtime_seconds": 8.321,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing the caller's recorded balance. A malicious recipient can re-enter Collect during the external call and withdraw multiple times before acc.balance is updated.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"Withdrawal eligibility depends on now > acc.unlockTime, so miner influence over block timestamps can affect whether a withdrawal succeeds in a given block. Put also uses now when setting unlockTime, making the locking logic timestamp-dependent.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 892,
+        "access_control_specialist": 843,
+        "timestamp_dependency_specialist": 1096,
+        "moderator": 1324
+      },
+      "total_tokens": 4155,
+      "specialist_runtime_seconds": 7.72,
+      "moderator_runtime_seconds": 8.321
+    },
+    {
+      "contract_id": "reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 15.999,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 915,
+          "runtime_seconds": 7.466,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":41,\"reasoning\":\"The function sends ether to msg.sender using call.value(_am)() before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly before their balance is reduced.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 781,
+          "runtime_seconds": 4.479,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 705,
+          "runtime_seconds": 3.19,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 1249,
+        "runtime_seconds": 8.529,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":41,\"reasoning\":\"CashOut sends ether to msg.sender via call.value(_am)() before reducing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly against the unchanged balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 915,
+        "access_control_specialist": 781,
+        "timestamp_dependency_specialist": 705,
+        "moderator": 1249
+      },
+      "total_tokens": 3650,
+      "specialist_runtime_seconds": 7.468,
+      "moderator_runtime_seconds": 8.529
+    },
+    {
+      "contract_id": "reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 31.801,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1022,
+          "runtime_seconds": 6.808,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender via call.value(_am) before reducing acc.balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly while the recorded balance is still unchanged.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 813,
+          "runtime_seconds": 4.657,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1201,
+          "runtime_seconds": 8.366,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Put\",\"line\":17,\"reasoning\":\"The contract uses `now` to set `acc.unlockTime`, which determines when deposited funds may later be withdrawn. Validators can slightly influence block timestamps, affecting the effective unlock time.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition depends on `now > acc.unlockTime`, making fund release dependent on the block timestamp. Validators can manipulate timestamps within a limited window to influence whether withdrawals are allowed.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 2071,
+        "runtime_seconds": 23.432,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"Collect sends Ether to msg.sender with call.value(_am) before reducing the caller's recorded balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly while the balance is still unchanged.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"Withdrawal eligibility depends on now > acc.unlockTime, and Put also uses now when setting unlockTime. Because block timestamps can be influenced slightly by validators, the effective release time of funds can be manipulated within that tolerance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1022,
+        "access_control_specialist": 813,
+        "timestamp_dependency_specialist": 1201,
+        "moderator": 2071
+      },
+      "total_tokens": 5107,
+      "specialist_runtime_seconds": 8.368,
+      "moderator_runtime_seconds": 23.432
+    },
+    {
+      "contract_id": "reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 21.684,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 372,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 740,
+          "runtime_seconds": 3.074,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":44,\"reasoning\":\"CashOut performs an external call to msg.sender with value before reducing balances[msg.sender]. A malicious recipient can re-enter CashOut during the call and withdraw repeatedly before their balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 764,
+          "runtime_seconds": 3.987,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1165,
+          "runtime_seconds": 10.327,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"CashOut\",\"line\":41,\"reasoning\":\"CashOut gates withdrawals with block.number > lastBlock, where lastBlock is set during Deposit using block.number. This uses a miner/validator-controlled block property to control fund withdrawal timing, making the security-critical cash-out decision dependent on block metadata.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 1418,
+        "runtime_seconds": 11.352,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":44,\"reasoning\":\"CashOut sends ether to msg.sender using a low-level call before reducing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw multiple times before their recorded balance is updated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 740,
+        "access_control_specialist": 764,
+        "timestamp_dependency_specialist": 1165,
+        "moderator": 1418
+      },
+      "total_tokens": 4087,
+      "specialist_runtime_seconds": 10.33,
+      "moderator_runtime_seconds": 11.352
+    },
+    {
+      "contract_id": "reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 26.44,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1169,
+          "runtime_seconds": 7.622,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":63,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am) before reducing acc.balance. A malicious receiver can re-enter Collect during the external call and withdraw repeatedly before its balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1331,
+          "runtime_seconds": 10.353,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":25,\"reasoning\":\"SetMinSum changes the critical MinSum parameter but is public and has no owner/role restriction; before initialization, any address can set it.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":32,\"reasoning\":\"SetLogFile changes the LogFile contract address but is public and has no owner/role restriction; before initialization, any address can redirect logging to an arbitrary contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":39,\"reasoning\":\"Initialized is public and unprotected, allowing any address to permanently set intitalized to true and prevent the intended party from configuring MinSum or LogFile.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1590,
+          "runtime_seconds": 12.327,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Put\",\"line\":51,\"reasoning\":\"The function uses now (block.timestamp) to compute and update acc.unlockTime, which determines when funds may later be withdrawn. Validators can influence the timestamp within a small window, slightly affecting the lock duration.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":60,\"reasoning\":\"The withdrawal condition depends on now > acc.unlockTime, so block.timestamp directly controls whether funds can be collected. Validators can manipulate the timestamp within allowable bounds to affect deadline-based fund access.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1860,
+        "runtime_seconds": 14.109,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":63,\"reasoning\":\"Collect sends Ether to msg.sender using call.value(_am) before decrementing the caller's recorded balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":25,\"reasoning\":\"The initialization/configuration functions SetMinSum, SetLogFile, and Initialized are public and have no owner or role restriction. Any address can set critical parameters or permanently lock initialization before the intended deployer/operator configures the contract.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":60,\"reasoning\":\"The contract uses now/block.timestamp to set unlockTime in Put and to decide withdrawal eligibility in Collect. Because miners/validators can influence timestamps within a small range, fund unlock timing can be slightly manipulated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1169,
+        "access_control_specialist": 1331,
+        "timestamp_dependency_specialist": 1590,
+        "moderator": 1860
+      },
+      "total_tokens": 5950,
+      "specialist_runtime_seconds": 12.329,
+      "moderator_runtime_seconds": 14.109
+    },
+    {
+      "contract_id": "reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 22.244,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 406,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1135,
+          "runtime_seconds": 6.75,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before reducing balances[msg.sender]. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1360,
+          "runtime_seconds": 10.244,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":19,\"reasoning\":\"SetMinSum changes the critical withdrawal threshold MinSum but is public and has no owner/role restriction. Any address can set this value before initialization.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":26,\"reasoning\":\"SetLogFile changes the Log contract address, a critical dependency used by deposits and withdrawals, but is public and lacks authorization. Any address can point it to an arbitrary contract before initialization.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":33,\"reasoning\":\"Initialized is an unprotected initializer/finalizer that permanently enables the initialized flag. Any address can call it to freeze configuration and prevent legitimate setup changes.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 798,
+          "runtime_seconds": 3.447,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 1611,
+        "runtime_seconds": 11.996,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":54,\"reasoning\":\"Collect sends Ether to msg.sender with a low-level call before reducing balances[msg.sender]. A malicious receiver can re-enter Collect during the call and withdraw repeatedly before its balance is updated.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":19,\"reasoning\":\"The configuration and initialization functions SetMinSum, SetLogFile, and Initialized are public and have no owner or role restriction. Any address can set critical parameters or permanently freeze configuration before legitimate setup is complete.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1135,
+        "access_control_specialist": 1360,
+        "timestamp_dependency_specialist": 798,
+        "moderator": 1611
+      },
+      "total_tokens": 4904,
+      "specialist_runtime_seconds": 10.246,
+      "moderator_runtime_seconds": 11.996
+    },
+    {
+      "contract_id": "reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.555,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 349,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 717,
+          "runtime_seconds": 3.361,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":40,\"reasoning\":\"CashOut sends ether to msg.sender using a low-level call before reducing balances[msg.sender]. A malicious receiver can re-enter CashOut during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 774,
+          "runtime_seconds": 4.439,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 694,
+          "runtime_seconds": 2.836,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 876,
+        "runtime_seconds": 3.109,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":40,\"reasoning\":\"CashOut performs a low-level ether transfer to msg.sender before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly against the same recorded balance.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 717,
+        "access_control_specialist": 774,
+        "timestamp_dependency_specialist": 694,
+        "moderator": 876
+      },
+      "total_tokens": 3061,
+      "specialist_runtime_seconds": 4.443,
+      "moderator_runtime_seconds": 3.109
+    },
+    {
+      "contract_id": "reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.514,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 347,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 869,
+          "runtime_seconds": 5.213,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":38,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before reducing balances[msg.sender]. A malicious receiver can re-enter CashOut during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 765,
+          "runtime_seconds": 4.29,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 692,
+          "runtime_seconds": 3.059,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 912,
+        "runtime_seconds": 4.298,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":38,\"reasoning\":\"CashOut performs a low-level Ether transfer to msg.sender before decrementing balances[msg.sender]. A malicious receiver can re-enter CashOut during the external call and withdraw multiple times before their balance is updated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 869,
+        "access_control_specialist": 765,
+        "timestamp_dependency_specialist": 692,
+        "moderator": 912
+      },
+      "total_tokens": 3238,
+      "specialist_runtime_seconds": 5.214,
+      "moderator_runtime_seconds": 4.298
+    },
+    {
+      "contract_id": "reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 9.188,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 351,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 852,
+          "runtime_seconds": 4.635,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":41,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during the external call and withdraw repeatedly before their balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 751,
+          "runtime_seconds": 4.031,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 663,
+          "runtime_seconds": 2.252,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 898,
+        "runtime_seconds": 4.551,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"CashOut\",\"line\":41,\"reasoning\":\"CashOut performs a low-level external call to msg.sender before decrementing balances[msg.sender]. A malicious recipient can re-enter CashOut during that call and withdraw repeatedly while the recorded balance is still unchanged.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 852,
+        "access_control_specialist": 751,
+        "timestamp_dependency_specialist": 663,
+        "moderator": 898
+      },
+      "total_tokens": 3164,
+      "specialist_runtime_seconds": 4.635,
+      "moderator_runtime_seconds": 4.551
+    },
+    {
+      "contract_id": "reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 26.509,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 461,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1215,
+          "runtime_seconds": 9.871,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":63,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am) before reducing acc.balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1311,
+          "runtime_seconds": 14.191,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"access_control\",\"function\":\"SetMinSum\",\"line\":25,\"reasoning\":\"SetMinSum changes the critical MinSum parameter but is publicly callable by anyone until the contract is initialized. There is no owner or role check restricting who may configure this value.\"},{\"vuln_class\":\"access_control\",\"function\":\"SetLogFile\",\"line\":32,\"reasoning\":\"SetLogFile changes the LogFile contract address used by the contract and is publicly callable by anyone until initialization. An unauthorized user can set this critical dependency to an arbitrary contract.\"},{\"vuln_class\":\"access_control\",\"function\":\"Initialized\",\"line\":39,\"reasoning\":\"Initialized is publicly callable and permanently locks the configuration state without any authorization check. Any account can call it before the intended administrator finishes setup, preventing legitimate configuration changes.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1366,
+          "runtime_seconds": 12.688,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Put\",\"line\":51,\"reasoning\":\"The function uses `now` to calculate and update `acc.unlockTime`, which determines when deposited funds can later be withdrawn. Validators can influence `block.timestamp` within a small range, affecting the lock period.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":60,\"reasoning\":\"The withdrawal condition depends on `now > acc.unlockTime`, so access to funds is controlled by a miner/validator-influenced timestamp. This makes the fund-release decision timestamp-dependent.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1868,
+        "runtime_seconds": 12.314,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":63,\"reasoning\":\"Collect sends Ether to msg.sender via call.value(_am) before reducing the recorded balance. A malicious recipient can re-enter Collect during the external call and withdraw multiple times before acc.balance is updated.\"},{\"vuln_class\":\"access_control\",\"function\":null,\"line\":25,\"reasoning\":\"SetMinSum, SetLogFile, and Initialized are publicly callable with no owner or role check, allowing any address to configure or permanently lock the contract initialization state. This lets an unauthorized caller set critical parameters or prevent intended setup.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":60,\"reasoning\":\"Withdrawal eligibility depends on now > acc.unlockTime, and unlockTime is also computed using now in Put. Because block timestamps can be influenced within a small range by block producers, the fund-release condition is timestamp-dependent.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1215,
+        "access_control_specialist": 1311,
+        "timestamp_dependency_specialist": 1366,
+        "moderator": 1868
+      },
+      "total_tokens": 5760,
+      "specialist_runtime_seconds": 14.193,
+      "moderator_runtime_seconds": 12.314
+    },
+    {
+      "contract_id": "reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 24.939,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 382,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 847,
+          "runtime_seconds": 4.545,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using msg.sender.call.value(_am)() before reducing acc.balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 801,
+          "runtime_seconds": 4.234,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1181,
+          "runtime_seconds": 9.517,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Put\",\"line\":17,\"reasoning\":\"The function uses `now` (`block.timestamp`) to set `acc.unlockTime`, which determines when deposited funds can later be withdrawn. Because validators can influence timestamps within a small range, this creates timestamp-dependent fund access control.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition depends on `now > acc.unlockTime`, so access to funds is controlled by `block.timestamp`. Validators can slightly manipulate the timestamp, potentially affecting the exact moment withdrawals become possible.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 1502,
+        "runtime_seconds": 15.417,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender with msg.sender.call.value(_am)() before reducing the stored balance. A malicious recipient can re-enter Collect during the external call and withdraw multiple times before acc.balance is decremented.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 847,
+        "access_control_specialist": 801,
+        "timestamp_dependency_specialist": 1181,
+        "moderator": 1502
+      },
+      "total_tokens": 4331,
+      "specialist_runtime_seconds": 9.519,
+      "moderator_runtime_seconds": 15.417
+    },
+    {
+      "contract_id": "reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 20.688,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 383,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 967,
+          "runtime_seconds": 5.876,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing acc.balance. A malicious recipient can re-enter Collect during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 849,
+          "runtime_seconds": 4.345,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1065,
+          "runtime_seconds": 7.53,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition uses `now > acc.unlockTime` to decide whether funds can be collected. Since `now`/`block.timestamp` can be influenced slightly by miners/validators, withdrawal timing is timestamp-dependent.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1495,
+        "runtime_seconds": 13.155,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"Collect\",\"line\":29,\"reasoning\":\"The function sends Ether to msg.sender using call.value(_am)() before reducing the sender's recorded balance. A malicious recipient can re-enter Collect during this external call and withdraw multiple times before acc.balance is decremented.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"Collect\",\"line\":26,\"reasoning\":\"The withdrawal condition depends on now via now > acc.unlockTime. Because block timestamps can be slightly influenced by block producers, the exact time at which withdrawals become possible is timestamp-dependent.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 967,
+        "access_control_specialist": 849,
+        "timestamp_dependency_specialist": 1065,
+        "moderator": 1495
+      },
+      "total_tokens": 4376,
+      "specialist_runtime_seconds": 7.532,
+      "moderator_runtime_seconds": 13.155
+    },
+    {
+      "contract_id": "reentrancy/etherbank.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.814,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 538,
+          "runtime_seconds": 2.781,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":21,\"reasoning\":\"The function sends Ether to msg.sender using call.value(amountToWithdraw) before setting userBalances[msg.sender] to zero. A malicious recipient can re-enter withdrawBalance during the external call and withdraw the same balance multiple times before the state is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 557,
+          "runtime_seconds": 3.552,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 460,
+          "runtime_seconds": 1.713,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 701,
+        "runtime_seconds": 4.259,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":21,\"reasoning\":\"The function performs an external call to msg.sender with call.value(amountToWithdraw) before setting userBalances[msg.sender] to zero. A malicious fallback can re-enter withdrawBalance and withdraw the same recorded balance multiple times before the state update occurs.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 538,
+        "access_control_specialist": 557,
+        "timestamp_dependency_specialist": 460,
+        "moderator": 701
+      },
+      "total_tokens": 2256,
+      "specialist_runtime_seconds": 3.553,
+      "moderator_runtime_seconds": 4.259
+    },
+    {
+      "contract_id": "reentrancy/etherstore.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "timestamp_dependency"
+      ],
+      "fn": [],
+      "runtime_seconds": 14.965,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 237,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 716,
+          "runtime_seconds": 4.583,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawFunds\",\"line\":27,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before decreasing balances[msg.sender] and updating lastWithdrawTime. A malicious recipient can re-enter withdrawFunds during the external call and withdraw repeatedly before the state is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 564,
+          "runtime_seconds": 2.552,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 918,
+          "runtime_seconds": 7.979,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"withdrawFunds\",\"line\":25,\"reasoning\":\"The function uses `now` (`block.timestamp`) to enforce the one-week withdrawal cooldown and later updates `lastWithdrawTime`. Since validators can slightly influence timestamps, this security-critical fund withdrawal condition can be manipulated within a small window.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1127,
+        "runtime_seconds": 6.982,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawFunds\",\"line\":27,\"reasoning\":\"The function performs a low-level external call to msg.sender before reducing the caller's balance and updating lastWithdrawTime. A malicious recipient can re-enter withdrawFunds during the call and withdraw repeatedly while the recorded balance and cooldown remain unchanged.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"withdrawFunds\",\"line\":25,\"reasoning\":\"The withdrawal cooldown is enforced using now/block.timestamp, and lastWithdrawTime is also updated from the timestamp. Because block timestamps can be slightly influenced by block producers, the timing condition for withdrawals can be manipulated within a small window.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 716,
+        "access_control_specialist": 564,
+        "timestamp_dependency_specialist": 918,
+        "moderator": 1127
+      },
+      "total_tokens": 3325,
+      "specialist_runtime_seconds": 7.981,
+      "moderator_runtime_seconds": 6.982
+    },
+    {
+      "contract_id": "reentrancy/modifier_reentrancy.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 11.607,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 355,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 878,
+          "runtime_seconds": 5.875,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"airDrop\",\"line\":15,\"reasoning\":\"The hasNoBalance modifier checks tokenBalance[msg.sender] before the supportsToken modifier makes an external call to msg.sender, and the balance is only updated after that call returns. A malicious caller can re-enter airDrop during supportsToken while its balance is still zero and receive the airdrop multiple times.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 709,
+          "runtime_seconds": 3.064,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 632,
+          "runtime_seconds": 1.871,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 1097,
+        "runtime_seconds": 5.73,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"airDrop\",\"line\":15,\"reasoning\":\"The hasNoBalance modifier checks tokenBalance[msg.sender] before the supportsToken modifier performs an external call to msg.sender, and the balance is only updated after that call returns. A malicious caller can re-enter airDrop during supportsToken while its balance is still zero and receive the airdrop more than once.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 878,
+        "access_control_specialist": 709,
+        "timestamp_dependency_specialist": 632,
+        "moderator": 1097
+      },
+      "total_tokens": 3316,
+      "specialist_runtime_seconds": 5.876,
+      "moderator_runtime_seconds": 5.73
+    },
+    {
+      "contract_id": "reentrancy/reentrance.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.202,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 570,
+          "runtime_seconds": 3.166,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":24,\"reasoning\":\"The function sends Ether to msg.sender using a low-level call before reducing balances[msg.sender]. A malicious receiver can re-enter withdraw during the external call and withdraw repeatedly before its balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 544,
+          "runtime_seconds": 2.574,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 492,
+          "runtime_seconds": 1.94,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 711,
+        "runtime_seconds": 3.031,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":24,\"reasoning\":\"The function performs a low-level Ether transfer to msg.sender before decrementing balances[msg.sender]. A malicious receiver can re-enter withdraw during the call and drain funds before its recorded balance is updated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 570,
+        "access_control_specialist": 544,
+        "timestamp_dependency_specialist": 492,
+        "moderator": 711
+      },
+      "total_tokens": 2317,
+      "specialist_runtime_seconds": 3.168,
+      "moderator_runtime_seconds": 3.031
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_bonus.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 16.549,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 258,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 831,
+          "runtime_seconds": 6.06,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"getFirstWithdrawalBonus\",\"line\":28,\"reasoning\":\"The function calls withdrawReward(recipient), which performs an external call to recipient, before setting claimedBonus[recipient] = true. A malicious recipient can re-enter getFirstWithdrawalBonus during the external call and claim the bonus multiple times before the claimed flag is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 1040,
+          "runtime_seconds": 12.889,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 532,
+          "runtime_seconds": 2.242,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 845,
+        "runtime_seconds": 3.658,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"getFirstWithdrawalBonus\",\"line\":28,\"reasoning\":\"The function invokes withdrawReward(recipient), which makes an external call to recipient, before setting claimedBonus[recipient] to true. A malicious recipient can re-enter getFirstWithdrawalBonus during that call and claim the bonus multiple times before the flag is updated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 831,
+        "access_control_specialist": 1040,
+        "timestamp_dependency_specialist": 532,
+        "moderator": 845
+      },
+      "total_tokens": 3248,
+      "specialist_runtime_seconds": 12.89,
+      "moderator_runtime_seconds": 3.658
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_cross_function.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.867,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 640,
+          "runtime_seconds": 4.3,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":24,\"reasoning\":\"withdrawBalance makes an external call to msg.sender before setting userBalances[msg.sender] to zero. During the callback, the caller can re-enter via transfer() and move the still-recorded balance to another address before the original balance is cleared.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 534,
+          "runtime_seconds": 2.271,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 487,
+          "runtime_seconds": 1.689,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 806,
+        "runtime_seconds": 3.565,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":24,\"reasoning\":\"withdrawBalance performs an external call to msg.sender before clearing userBalances[msg.sender]. A malicious caller can re-enter during the callback, including via transfer(), while the original balance is still recorded.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 640,
+        "access_control_specialist": 534,
+        "timestamp_dependency_specialist": 487,
+        "moderator": 806
+      },
+      "total_tokens": 2467,
+      "specialist_runtime_seconds": 4.3,
+      "moderator_runtime_seconds": 3.565
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 11.185,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 172,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 658,
+          "runtime_seconds": 4.535,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawAll\",\"line\":18,\"reasoning\":\"The function performs an external call to msg.sender before setting credit[msg.sender] to 0. A malicious recipient can re-enter withdrawAll while their credit is still unchanged and withdraw repeatedly.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 502,
+          "runtime_seconds": 8.475,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 466,
+          "runtime_seconds": 1.605,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 679,
+        "runtime_seconds": 2.708,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawAll\",\"line\":18,\"reasoning\":\"withdrawAll sends Ether to msg.sender via a low-level call before clearing credit[msg.sender]. A malicious recipient can re-enter withdrawAll while their credit remains nonzero and drain funds repeatedly.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 658,
+        "access_control_specialist": 502,
+        "timestamp_dependency_specialist": 466,
+        "moderator": 679
+      },
+      "total_tokens": 2305,
+      "specialist_runtime_seconds": 8.476,
+      "moderator_runtime_seconds": 2.708
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_insecure.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 14.409,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 158,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 535,
+          "runtime_seconds": 10.755,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":17,\"reasoning\":\"The function sends Ether to msg.sender via a low-level call before setting userBalances[msg.sender] to zero. A malicious caller can re-enter withdrawBalance during the external call and withdraw the same balance multiple times before the state is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 508,
+          "runtime_seconds": 2.422,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 448,
+          "runtime_seconds": 1.857,
+          "error": null,
+          "response": "{\"findings\":[]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 689,
+        "runtime_seconds": 3.652,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":17,\"reasoning\":\"The function performs a low-level external call to msg.sender before resetting userBalances[msg.sender] to zero. A malicious recipient can re-enter withdrawBalance during the call and withdraw the same recorded balance multiple times before state is updated.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 535,
+        "access_control_specialist": 508,
+        "timestamp_dependency_specialist": 448,
+        "moderator": 689
+      },
+      "total_tokens": 2180,
+      "specialist_runtime_seconds": 10.755,
+      "moderator_runtime_seconds": 3.652
+    },
+    {
+      "contract_id": "reentrancy/reentrancy_simple.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 6.755,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 200,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 560,
+          "runtime_seconds": 3.347,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":24,\"reasoning\":\"The function sends Ether to msg.sender using call.value(userBalance[msg.sender]) before setting userBalance[msg.sender] to 0. A malicious contract can re-enter withdrawBalance from its fallback function and withdraw repeatedly before the balance is cleared.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 557,
+          "runtime_seconds": 2.914,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 480,
+          "runtime_seconds": 2.194,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 713,
+        "runtime_seconds": 3.406,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdrawBalance\",\"line\":24,\"reasoning\":\"The function transfers Ether to msg.sender via call.value(userBalance[msg.sender]) before setting the sender's balance to zero. A malicious contract can re-enter withdrawBalance from its fallback function and withdraw repeatedly while its recorded balance remains unchanged.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 560,
+        "access_control_specialist": 557,
+        "timestamp_dependency_specialist": 480,
+        "moderator": 713
+      },
+      "total_tokens": 2310,
+      "specialist_runtime_seconds": 3.348,
+      "moderator_runtime_seconds": 3.406
+    },
+    {
+      "contract_id": "reentrancy/simple_dao.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 7.585,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 146,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 539,
+          "runtime_seconds": 3.483,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":19,\"reasoning\":\"The function sends Ether to msg.sender using call.value(amount) before reducing credit[msg.sender]. A malicious recipient can re-enter withdraw during the external call and withdraw repeatedly before the balance is updated.\"}]}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 498,
+          "runtime_seconds": 2.8,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [],
+          "total_tokens": 448,
+          "runtime_seconds": 2.252,
+          "error": null,
+          "response": "{\"findings\": []}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy"
+        ],
+        "total_tokens": 706,
+        "runtime_seconds": 4.1,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"withdraw\",\"line\":19,\"reasoning\":\"The function performs an external call to msg.sender with call.value(amount) before reducing credit[msg.sender]. A malicious recipient can re-enter withdraw during that call and withdraw repeatedly while their recorded credit is still unchanged.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 539,
+        "access_control_specialist": 498,
+        "timestamp_dependency_specialist": 448,
+        "moderator": 706
+      },
+      "total_tokens": 2191,
+      "specialist_runtime_seconds": 3.484,
+      "moderator_runtime_seconds": 4.1
+    },
+    {
+      "contract_id": "reentrancy/spank_chain_payment.sol",
+      "gt_classes": [
+        "reentrancy"
+      ],
+      "pred_classes": [
+        "access_control",
+        "reentrancy"
+      ],
+      "tp": [
+        "reentrancy"
+      ],
+      "fp": [
+        "access_control"
+      ],
+      "fn": [],
+      "runtime_seconds": 174.512,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 9096,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 11150,
+          "runtime_seconds": 40.354,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"LCOpenTimeout\", \"line\": 426, \"reasoning\": \"The function transfers ETH and/or tokens back to partyA before deleting or otherwise clearing the channel state. A malicious recipient/token contract can re-enter before `delete Channels[_lcID]` and repeat the timeout withdrawal.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 12915,
+          "runtime_seconds": 59.157,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"closeVirtualChannel\", \"line\": 726, \"reasoning\": \"This public function mutates critical channel accounting, including numOpenVC and ledger-channel balances, without requiring the caller to be a channel participant or otherwise authorised. It also accepts an arbitrary _vcID for a given _lcID, so an unauthorised caller can finalize a settled virtual channel against an unrelated ledger channel and corrupt its balances.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 14150,
+          "runtime_seconds": 55.597,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"createChannel\",\"line\":413,\"reasoning\":\"The channel open timeout is computed using `now + _confirmTime`; this timestamp-derived deadline controls when deposited funds may later be refunded if the counterparty does not join. Validators can slightly influence `now`, shifting this fund-control deadline.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"LCOpenTimeout\",\"line\":421,\"reasoning\":\"The refund path for an unjoined channel is gated by `now > LCopenTimeout`, directly controlling when the creator can recover ETH/tokens. Because `now` is miner/validator-influenced, this fund-release decision is timestamp-dependent.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"updateLCstate\",\"line\":565,\"reasoning\":\"The function uses `now` to decide whether a ledger-channel state may be updated during settlement and also sets `updateLCtimeout` from `now + confirmTime`. These timestamp-based deadlines affect later settlement and fund withdrawal behavior.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"initVCstate\",\"line\":630,\"reasoning\":\"Initialization of a virtual-channel settlement state is gated by `Channels[_lcID].updateLCtimeout < now`, and the VC timeout is then set from `now + confirmTime`. These timestamp checks control when settlement can proceed for channel funds.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"settleVC\",\"line\":688,\"reasoning\":\"The function requires `Channels[_lcID].updateLCtimeout < now` before accepting a VC settlement update and then sets `updateVCtimeout` using `now`. This makes settlement timing, and therefore fund allocation finalization, dependent on validator-influenced timestamps.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"closeVirtualChannel\",\"line\":728,\"reasoning\":\"Closing a virtual channel is gated by `virtualChannels[_vcID].updateVCtimeout < now`, which determines when balances are reintroduced into the ledger channel. This fund-affecting decision depends on a manipulable block timestamp.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"byzantineCloseChannel\",\"line\":762,\"reasoning\":\"Byzantine channel closure and payout is allowed only after `channel.updateLCtimeout < now`. Since this deadline controls final fund distribution, reliance on `now` creates timestamp dependency.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "reentrancy",
+          "access_control"
+        ],
+        "total_tokens": 16003,
+        "runtime_seconds": 115.353,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"reentrancy\",\"function\":\"LCOpenTimeout\",\"line\":426,\"reasoning\":\"The function performs external payout calls before deleting or clearing the channel state. With a malicious token/party contract, the token transfer path can re-enter while balances and timeout state are still intact, allowing repeated refunds.\"},{\"vuln_class\":\"access_control\",\"function\":\"closeVirtualChannel\",\"line\":726,\"reasoning\":\"The function is public and does not verify that the supplied virtual channel belongs to the supplied ledger channel or that the caller is authorized. An arbitrary caller can close a settled VC against an unrelated LC, decrementing numOpenVC and potentially corrupting that LC's balances.\"},{\"vuln_class\":\"reentrancy\",\"function\":\"byzantineCloseChannel\",\"line\":762,\"reasoning\":\"The function performs external token transfers before marking the channel closed, while some deposit accounting remains uncleared. A malicious token can re-enter the function during transfer and cause deposit balances to be re-applied and paid more than once.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 11150,
+        "access_control_specialist": 12915,
+        "timestamp_dependency_specialist": 14150,
+        "moderator": 16003
+      },
+      "total_tokens": 54218,
+      "specialist_runtime_seconds": 59.158,
+      "moderator_runtime_seconds": 115.353
+    },
+    {
+      "contract_id": "time_manipulation/ether_lotto.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 16.54,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 421,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 1168,
+          "runtime_seconds": 10.878,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 752,
+          "runtime_seconds": 3.141,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 774,
+          "runtime_seconds": 4.424,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"play\",\"line\":43,\"reasoning\":\"The lottery winner is selected using `uint(sha3(block.timestamp)) % 2`, making the payout decision dependent on `block.timestamp`. Miners/validators can influence timestamps within a limited range, allowing manipulation of the randomness and potentially the jackpot outcome.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "timestamp_dependency"
+        ],
+        "total_tokens": 983,
+        "runtime_seconds": 5.66,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"play\",\"line\":43,\"reasoning\":\"The winner selection uses `uint(sha3(block.timestamp)) % 2`, so the payout condition depends directly on the block timestamp. Miners can influence timestamps within a limited range, making the lottery outcome manipulable.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1168,
+        "access_control_specialist": 752,
+        "timestamp_dependency_specialist": 774,
+        "moderator": 983
+      },
+      "total_tokens": 3677,
+      "specialist_runtime_seconds": 10.879,
+      "moderator_runtime_seconds": 5.66
+    },
+    {
+      "contract_id": "time_manipulation/governmental_survey.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 37.265,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 293,
+      "specialists": {
+        "reentrancy": {
+          "classes": [
+            "reentrancy"
+          ],
+          "total_tokens": 1165,
+          "runtime_seconds": 13.455,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"reentrancy\", \"function\": \"resetInvestment\", \"line\": 27, \"reasoning\": \"The function sends ether to lastInvestor and owner before resetting lastInvestor, jackpot, and lastInvestmentTimestamp. This violates checks-effects-interactions and could allow a malicious recipient to re-enter before state is updated, although send's limited gas stipend reduces practical exploitability.\"}]}"
+        },
+        "access_control": {
+          "classes": [
+            "access_control"
+          ],
+          "total_tokens": 1689,
+          "runtime_seconds": 21.481,
+          "error": null,
+          "response": "{\"findings\": [{\"vuln_class\": \"access_control\", \"function\": \"resetInvestment\", \"line\": 30, \"reasoning\": \"resetInvestment performs Ether payouts and resets critical investment state without checking that the caller is the owner, lastInvestor, or another authorised role. Any address can trigger the withdrawal/reset once the timestamp condition is met.\"}]}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1128,
+          "runtime_seconds": 9.74,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"invest\",\"line\":27,\"reasoning\":\"The contract records lastInvestmentTimestamp using block.timestamp, which miners/validators can influence within a limited window. This timestamp is later used to determine when the jackpot can be paid out.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"resetInvestment\",\"line\":31,\"reasoning\":\"resetInvestment uses block.timestamp to decide whether the jackpot payout can occur. Because this deadline controls fund distribution, miner/validator influence over the timestamp can affect the security-critical payout condition.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "timestamp_dependency"
+        ],
+        "total_tokens": 1860,
+        "runtime_seconds": 15.781,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"resetInvestment\",\"line\":31,\"reasoning\":\"The contract uses block.timestamp to decide whether the jackpot payout can occur, based on lastInvestmentTimestamp set in invest. Because this timing condition controls fund distribution, miner influence over timestamps can affect the payout/reset condition.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 1165,
+        "access_control_specialist": 1689,
+        "timestamp_dependency_specialist": 1128,
+        "moderator": 1860
+      },
+      "total_tokens": 5842,
+      "specialist_runtime_seconds": 21.482,
+      "moderator_runtime_seconds": 15.781
+    },
+    {
+      "contract_id": "time_manipulation/lottopollo.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 39.764,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 208,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 789,
+          "runtime_seconds": 7.548,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 772,
+          "runtime_seconds": 7.11,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1029,
+          "runtime_seconds": 8.813,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"payOut\",\"line\":13,\"reasoning\":\"The payout decision depends on `now - rand > 24 hours`, and `now` is miner/validator-influenced. Because this condition controls refunds and transfer of the contract balance, timestamp manipulation can affect fund flow.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"randomGen\",\"line\":27,\"reasoning\":\"`randomGen` returns `block.timestamp` as the random number. Block timestamps are miner/validator-influenced and should not be used as randomness for security-critical logic.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "timestamp_dependency"
+        ],
+        "total_tokens": 2323,
+        "runtime_seconds": 30.946,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"randomGen\",\"line\":27,\"reasoning\":\"`randomGen` uses `block.timestamp` as the lottery random number, and `draw` passes that value into payout logic. Block timestamps are miner-influenced and should not be used as randomness or as an input to fund-flow decisions.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 789,
+        "access_control_specialist": 772,
+        "timestamp_dependency_specialist": 1029,
+        "moderator": 2323
+      },
+      "total_tokens": 4913,
+      "specialist_runtime_seconds": 8.815,
+      "moderator_runtime_seconds": 30.946
+    },
+    {
+      "contract_id": "time_manipulation/roulette.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 45.108,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 180,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 535,
+          "runtime_seconds": 3.881,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 535,
+          "runtime_seconds": 2.908,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 1018,
+          "runtime_seconds": 11.98,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"fallback\",\"line\":18,\"reasoning\":\"The fallback function uses `now` to enforce one bet per block via `require(now != pastBlockTime)`. Since block timestamps can be influenced by validators within a small range, this security-relevant control depends on manipulable timestamp data.\"},{\"vuln_class\":\"timestamp_dependency\",\"function\":\"fallback\",\"line\":21,\"reasoning\":\"The payout condition `if (now % 15 == 0)` uses the block timestamp as a randomness source to determine the winner. Validators can influence `now` enough to bias whether the condition is met and potentially drain the contract balance.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "timestamp_dependency"
+        ],
+        "total_tokens": 2299,
+        "runtime_seconds": 33.123,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"fallback\",\"line\":21,\"reasoning\":\"The fallback function determines the winner with `if (now % 15 == 0)`, using the block timestamp as a randomness source. Block producers can influence timestamps within the allowed range and include bets only when favorable, biasing the outcome and potentially draining the contract.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 535,
+        "access_control_specialist": 535,
+        "timestamp_dependency_specialist": 1018,
+        "moderator": 2299
+      },
+      "total_tokens": 4387,
+      "specialist_runtime_seconds": 11.982,
+      "moderator_runtime_seconds": 33.123
+    },
+    {
+      "contract_id": "time_manipulation/timed_crowdsale.sol",
+      "gt_classes": [
+        "timestamp_dependency"
+      ],
+      "pred_classes": [
+        "timestamp_dependency"
+      ],
+      "tp": [
+        "timestamp_dependency"
+      ],
+      "fp": [],
+      "fn": [],
+      "runtime_seconds": 8.036,
+      "model": "gpt-5.5",
+      "use_moderator": true,
+      "active_specialists": [
+        "reentrancy",
+        "access_control",
+        "timestamp_dependency"
+      ],
+      "skipped": false,
+      "skip_reason": null,
+      "estimated_source_tokens": 107,
+      "specialists": {
+        "reentrancy": {
+          "classes": [],
+          "total_tokens": 404,
+          "runtime_seconds": 1.983,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "access_control": {
+          "classes": [],
+          "total_tokens": 429,
+          "runtime_seconds": 1.983,
+          "error": null,
+          "response": "{\"findings\": []}"
+        },
+        "timestamp_dependency": {
+          "classes": [
+            "timestamp_dependency"
+          ],
+          "total_tokens": 514,
+          "runtime_seconds": 3.928,
+          "error": null,
+          "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"isSaleFinished\",\"line\":13,\"reasoning\":\"The function uses block.timestamp to determine whether the crowdsale has finished. Validators can influence timestamps within a small window, which can affect the sale deadline decision.\"}]}"
+        }
+      },
+      "specialist_union_classes": [
+        "timestamp_dependency"
+      ],
+      "moderator": {
+        "ran": true,
+        "classes": [
+          "timestamp_dependency"
+        ],
+        "total_tokens": 636,
+        "runtime_seconds": 4.102,
+        "error": null,
+        "fell_back_to_union": false,
+        "response": "{\"findings\":[{\"vuln_class\":\"timestamp_dependency\",\"function\":\"isSaleFinished\",\"line\":13,\"reasoning\":\"The function relies on block.timestamp to decide whether the crowdsale has finished. Miners/validators can influence timestamps within a limited range, potentially affecting the exact deadline decision.\"}]}"
+      },
+      "role_tokens": {
+        "reentrancy_specialist": 404,
+        "access_control_specialist": 429,
+        "timestamp_dependency_specialist": 514,
+        "moderator": 636
+      },
+      "total_tokens": 1983,
+      "specialist_runtime_seconds": 3.931,
+      "moderator_runtime_seconds": 4.102
+    }
+  ],
+  "run_index": 2,
+  "total_tokens_used": 306024,
+  "role_token_totals": {
+    "reentrancy_specialist": 69110,
+    "access_control_specialist": 69568,
+    "timestamp_dependency_specialist": 65738,
+    "moderator": 101608
+  },
+  "mean_tokens_per_contract": 5667.1,
+  "skipped_contracts": 0
+}
